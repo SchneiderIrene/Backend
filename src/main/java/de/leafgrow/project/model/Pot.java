@@ -3,8 +3,6 @@ package de.leafgrow.project.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
-
 @Data
 @Entity
 public class Pot {
