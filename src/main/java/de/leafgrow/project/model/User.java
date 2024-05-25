@@ -1,14 +1,11 @@
 package de.leafgrow.project.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-//import javax.persistence.*;
-import jakarta.persistence.*;
-import java.util.List;
+import java.util.Set;
 
-@Data
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,15 +13,41 @@ public class User {
     private Long id;
 
     private String name;
+
     private String email;
+
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+    private Set<Role> roles;
 
-    @OneToMany(mappedBy = "user")
-    private List<Pot> pots;
+    // Геттеры и сеттеры для id, name, email, password
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getEmail() {
+        return null;
+    }
+
+    public String getPassword() {
+        return null;
+    }
+
+    public void setName(String name) {
+    }
+
+    public void setEmail(String email) {
+    }
+
+    public void setPassword(String encode) {
+    }
 }

@@ -3,7 +3,7 @@ package de.leafgrow.project.controller;
 import de.leafgrow.project.dto.UserLoginDto;
 import de.leafgrow.project.dto.UserRegistrationDto;
 import de.leafgrow.project.security.JwtTokenUtil;
-import de.leafgrow.project.service.UserService;
+import de.leafgrow.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
