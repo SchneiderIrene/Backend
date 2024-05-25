@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pots</title>
+</head>
+<body>
+<h1>Pots</h1>
+<form action="/api/pots/add" method="post">
+    <label for="plantName">Plant Name:</label>
+    <input type="text" id="plantName" name="plantName"><br>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description"><br>
+    <input type="submit" value="Add Pot">
+</form>
+
+<h2>Existing Pots</h2>
+<div id="pots">
+    <div th:each="pot : ${pots}">
+        <p th:text="${pot.plantName}">Plant Name</p>
+        <p th:text="${pot.description}">Description</p>
+        <form th:action="@{/api/pots/delete/{id}(id=${pot.id})}" method="post">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</div>
+</body>
+</html>
