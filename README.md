@@ -1,56 +1,100 @@
 Я создал инструкцию и внес некоторые уточнения и исправления для более четкого понимания и соответствия с требованиями.
 
-Для создания проекта с использованием Spring Initializr, нужно указать следующие настройки:
+Для создания проекта с использованием Spring Initializr, 
+нужно указать следующие настройки:
 
-1. Основные параметры проекта
+
+1. ### Основные параметры проекта
+
+
    Group: de.leafgrow
+
    Artifact: project
+
    Name: LeafGrow.de
+
    Description: MWP website backend for daily plant care tips
+
    Package name: de.leafgrow.project
+
    Packaging: Jar
+
    Java: 11 (или выше, если требуется)
-2. Зависимости
+
+2. ### Зависимости
+                       
+
    Нужны следующие зависимости:
 
-Spring Boot DevTools (опционально для разработки)
-Spring Web (для создания REST API)
+Spring Boot DevTools (опционально для разработки)   
+
+Spring Web (для создания REST API)          
+
 Spring Security (для обеспечения безопасности)
+
 Spring Data JPA (для работы с базой данных через Hibernate)
+
 Liquibase (для управления миграциями базы данных)
+
 PostgreSQL Driver (для подключения к PostgreSQL)
+
 Spring Boot Actuator (для мониторинга и управления приложением)
+
 Thymeleaf (для создания HTML страниц)
+
 Spring Mail (для отправки email сообщений)
-Шаги для настройки проекта в Spring Initializr:
+
+### Шаги для настройки проекта в Spring Initializr:
+
 Перейдите на сайт Spring Initializr.
 
 Настройки проекта:
 
+
 Project: Maven Project
+
 Language: Java
+
 Spring Boot: 2.6.6 (или любая актуальная версия)
+
 Group: de.leafgrow
+
 Artifact: project
+
 Name: LeafGrow.de
+
 Description: MWP website backend for daily plant care tips
+
 Package name: de.leafgrow.project
+
 Packaging: Jar
+
 Java: 11
+
 Выберите зависимости:
 
+
 Spring Boot DevTools (опционально)
+
 Spring Web
+
 Spring Security
+
 Spring Data JPA
+
 Liquibase
+
 PostgreSQL Driver
+
 Spring Boot Actuator
+
 Thymeleaf
+
 Spring Mail
+
 Нажмите на кнопку "Generate", чтобы скачать проект. Распакуйте архив в удобное для вас место.
 
-Дополнительные настройки
+### Дополнительные настройки
 application-dev.yml
 
 
