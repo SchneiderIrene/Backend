@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/leafgrow
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    password: qwerty007
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        auto_quote_keyword: true
+
+
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: your_email@example.com
+    password: your_email_password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  jwt:
+    secret: your_jwt_secret
+    expiration: 3600
+    header: Authorization
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/leafgrow
+#    username: postgres
+#    driver-class-name: org.postgresql.Driver
+#    password: qwerty007
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.xml
+#  jpa:
+#    properties:
+#      hibernate:
+#        auto_quote_keyword: true
