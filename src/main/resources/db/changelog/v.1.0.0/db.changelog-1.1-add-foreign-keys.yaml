@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: chicagoist
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: role_id
+            referencedTableName: roles
+            referencedColumnNames: id
+            constraintName: fkey_user_to_role
+            onDelete: CASCADE
+
+  - changeSet:
+      id: 2
+      author: chicagoist
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: pots
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fkey_pots_to_user
+            onDelete: CASCADE
