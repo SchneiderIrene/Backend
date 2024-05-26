@@ -1,31 +1,36 @@
 package de.leafgrow.project.controller;
 
-import de.leafgrow.project.dto.PotDto;
-import de.leafgrow.project.service.PotService;
+import de.leafgrow.project.domain.dto.PotDto;
+import de.leafgrow.project.domain.entity.Pot;
+import de.leafgrow.project.domain.entity.User;
+import de.leafgrow.project.service.interfaces.PotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/pots")
-public class PotController {
+import java.util.List;
 
+@RestController
+@RequestMapping("/api")
+public class PotController {
     @Autowired
     private PotService potService;
 
-    @PostMapping("/add")
-    public ResponseEntity<?> addPot(@RequestBody PotDto potDto) {
-        return ResponseEntity.ok(potService.addPot(potDto));
+    @GetMapping("/pots")
+    public ResponseEntity<List<Pot>> getPotsByUserId(@RequestParam Long userId) {
+        return ResponseEntity.ok(potService.getPotsByUserId(userId));
     }
 
-    @GetMapping
-    public ResponseEntity<?> getPots() {
-        return ResponseEntity.ok(potService.getPots());
+    @PostMapping("/pots")
+    public ResponseEntity<Pot> addPot(@AuthenticationPrincipal User user, @RequestBody PotDto potDto) {
+        return ResponseEntity.ok(potService.addPot(potDto, user));
     }
 
-    @DeleteMapping("/{potId}")
-    public ResponseEntity<?> deletePot(@PathVariable Long potId) {
-        potService.deletePot(potId);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/pots/{id}")
+    public ResponseEntity<Void> deletePot(@PathVariable Long id, @AuthenticationPrincipal User user) {
+        potService.deletePot(id, user);
+        return ResponseEntity.noContent().build();
     }
+
 }

@@ -1,4 +1,4 @@
-package de.leafgrow.project.dto;
+package de.leafgrow.project.domain.dto;
 
 import lombok.Data;
 

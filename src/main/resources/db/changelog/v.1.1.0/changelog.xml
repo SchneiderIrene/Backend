@@ -8,7 +8,6 @@
         <tagDatabase tag="v.1.0.0"/>
     </changeSet>
 
-    <include file="create-foreign-key-cart-to-customer.xml" relativeToChangelogFile="true"/>
-    <include file="db.changelog-1.1-add-foreign-keys.yaml" relativeToChangelogFile="true"/>
+<!--    <include file="db.changelog-1.1-add-foreign-keys.yaml" relativeToChangelogFile="true"/>-->
 
 </databaseChangeLog>
