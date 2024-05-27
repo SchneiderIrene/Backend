@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface PotRepository extends JpaRepository<Pot, Long> {
-    List<Pot> findByUserId(Long userId);
 }

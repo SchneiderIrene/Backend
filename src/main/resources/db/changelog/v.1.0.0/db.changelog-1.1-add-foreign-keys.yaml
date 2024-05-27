@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - addForeignKeyConstraint:
             baseTableName: user
-            baseColumnNames: role_id
+            baseColumnNames: roles
             referencedTableName: role
             referencedColumnNames: id
             constraintName: fkey_user_to_role

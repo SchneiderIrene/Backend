@@ -6,6 +6,7 @@ import de.leafgrow.project.domain.entity.Pot;
 import de.leafgrow.project.domain.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PotService {
     Pot addPot(PotDto potDto, User user);
@@ -13,5 +14,15 @@ public interface PotService {
     void deletePot(Long potId, User user);
 
     List<Pot> getPotsByUserId(Long userId);
+
+    List<Pot> getAllPots();
+
+    Optional<Pot> getPotById(Long id);
+
+    Pot savePot(Pot pot);
+
+    void deletePot(Long id);
+
+    Pot updatePot(Long id, Pot potDetails);
 }
 

@@ -1,7 +1,6 @@
 package de.leafgrow.project.service;
 
 
-
 import de.leafgrow.project.domain.dto.UserRegistrationDto;
 import de.leafgrow.project.domain.entity.Role;
 import de.leafgrow.project.domain.entity.User;
@@ -14,6 +13,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -28,37 +30,56 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with email: " + email);
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+    }
+
+    @Override
     public User registerUser(UserRegistrationDto userRegistrationDto) {
         User user = new User();
-        user.setName(userRegistrationDto.getName());
+        user.setUsername(userRegistrationDto.getUsername());
         user.setEmail(userRegistrationDto.getEmail());
         user.setPassword(passwordEncoder.encode(userRegistrationDto.getPassword()));
 
-        Role userRole = roleRepository.findByName("ROLE_CUSTOMER");
-        user.setRole(userRole);
+        Set<Role> userRole = (Set<Role>) roleRepository.findByName("ROLE_CUSTOMER");
+        user.setRoles(userRole);
 
         return userRepository.save(user);
     }
-    
+
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email).orElse(null);
+        return userRepository.findByEmail(email);
     }
 
     @Override
     public User loadUserByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+        if (userRepository.findByEmail(email) != null) {
+            return userRepository.findByEmail(email);
+        } else {
+
+            throw new UsernameNotFoundException("User not found with email: " + email);
+        }
+
     }
 
 
-
-    @Override
+/*    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails) userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
-    }
+
+        if (userRepository.findByEmail(username) != null) {
+            return (UserDetails) userRepository.findByEmail(username);
+        } else {
+            throw new UsernameNotFoundException("User not found with email: " + username));
+
+        }
+
+    }*/
 
 
 }
