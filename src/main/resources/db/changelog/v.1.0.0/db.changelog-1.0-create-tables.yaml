@@ -1,3 +1,4 @@
+# <!--    Для нового варианта БД от Василия-->
 databaseChangeLog:
   - changeSet:
       id: 1
