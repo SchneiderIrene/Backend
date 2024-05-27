@@ -1,38 +1,34 @@
 package de.leafgrow.project.domain.dto;
 
-
-import de.leafgrow.project.domain.entity.User;
-
 import java.util.Objects;
 
 public class PotDto {
+    private Long id;
     private String plantName;
-    private String description;
-
-    private User user;
+    private boolean activated;
 
     public String getPlantName() {
         return plantName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setPlantName(String plantName) {
         this.plantName = plantName;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean isActivated() {
+        return activated;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 
     @Override
@@ -40,20 +36,19 @@ public class PotDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PotDto potDto = (PotDto) o;
-        return Objects.equals(plantName, potDto.plantName) && Objects.equals(description, potDto.description) && Objects.equals(user, potDto.user);
+        return activated == potDto.activated && Objects.equals(id, potDto.id) && Objects.equals(plantName, potDto.plantName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(plantName, description, user);
+        return Objects.hash(id, plantName, activated);
     }
 
     @Override
     public String toString() {
         return "PotDto{" +
                 "plantName='" + plantName + '\'' +
-                ", description='" + description + '\'' +
+                ", activated=" + activated +
                 '}';
     }
 }
-

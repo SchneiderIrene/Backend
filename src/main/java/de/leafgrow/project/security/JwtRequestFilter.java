@@ -1,7 +1,6 @@
 package de.leafgrow.project.security;
 
-import de.leafgrow.project.service.UserServiceImpl;
-import io.jsonwebtoken.ExpiredJwtException;
+import de.leafgrow.project.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -40,7 +39,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 email = jwtTokenUtil.getEmailFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get JWT Token");
-            } catch (ExpiredJwtException e) {
+            } catch (RuntimeException e) {
                 System.out.println("JWT Token has expired");
             }
         } else {
