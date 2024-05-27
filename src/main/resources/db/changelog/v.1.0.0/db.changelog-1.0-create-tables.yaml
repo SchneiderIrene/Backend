@@ -4,7 +4,7 @@ databaseChangeLog:
       author: chicagoist
       changes:
         - createTable:
-            tableName: roles
+            tableName: role
             columns:
               - column:
                   name: id
@@ -14,7 +14,7 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: title
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
@@ -25,7 +25,7 @@ databaseChangeLog:
       author: chicagoist
       changes:
         - createTable:
-            tableName: users
+            tableName: 'user'
             columns:
               - column:
                   name: id
@@ -35,10 +35,11 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: username
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
+                    unique: true
               - column:
                   name: email
                   type: VARCHAR(255)
@@ -51,17 +52,23 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: role_id
+                  name: roles
                   type: BIGINT
                   constraints:
                     nullable: false
+              - column:
+                  name: is_Active
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+                    defaultValueBoolean: false
 
   - changeSet:
       id: 3
       author: chicagoist
       changes:
         - createTable:
-            tableName: pots
+            tableName: pot
             columns:
               - column:
                   name: id
@@ -84,7 +91,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: active
+                  name: instructions_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_Active
                   type: BOOLEAN
                   constraints:
                     nullable: false
@@ -95,7 +107,7 @@ databaseChangeLog:
       author: chicagoist
       changes:
         - createTable:
-            tableName: instructions
+            tableName: instruction
             columns:
               - column:
                   name: id
@@ -105,7 +117,21 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: text
+                  name: content
                   type: TEXT
                   constraints:
                     nullable: false
+              - column:
+                  name: is_Important
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+                    defaultValueBoolean: true
+              - column:
+                  name: day
+                  type: date
+                  constraints:
+                    nullable: false
+                    unique: true
+
+
