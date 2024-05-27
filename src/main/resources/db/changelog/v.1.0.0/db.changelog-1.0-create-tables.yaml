@@ -78,6 +78,11 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: plant_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
                   name: description
                   type: TEXT
               - column:
