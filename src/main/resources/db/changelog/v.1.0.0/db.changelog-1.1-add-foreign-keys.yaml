@@ -4,9 +4,9 @@ databaseChangeLog:
       author: chicagoist
       changes:
         - addForeignKeyConstraint:
-            baseTableName: users
+            baseTableName: user
             baseColumnNames: role_id
-            referencedTableName: roles
+            referencedTableName: role
             referencedColumnNames: id
             constraintName: fkey_user_to_role
             onDelete: CASCADE
@@ -16,9 +16,9 @@ databaseChangeLog:
       author: chicagoist
       changes:
         - addForeignKeyConstraint:
-            baseTableName: pots
+            baseTableName: pot
             baseColumnNames: user_id
-            referencedTableName: users
+            referencedTableName: user
             referencedColumnNames: id
             constraintName: fkey_pots_to_user
             onDelete: CASCADE
