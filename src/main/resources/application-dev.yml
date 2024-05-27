@@ -28,10 +28,10 @@ spring:
           auth: true
           starttls:
             enable: true
-  jwt:
-    secret: your_jwt_secret
-    expiration: 3600
-    header: Authorization
+#  jwt:
+#    secret: your_jwt_secret
+#    expiration: 3600
+#    header: Authorization
 #spring:
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/leafgrow
