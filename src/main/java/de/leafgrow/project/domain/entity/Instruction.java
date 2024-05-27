@@ -2,11 +2,9 @@ package de.leafgrow.project.domain.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "instructions")
+@Table(name = "instruction")
 public class Instruction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

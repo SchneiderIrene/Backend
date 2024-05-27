@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) {
         UserRegistrationDto user = new UserRegistrationDto();
-        user.setName(userDto.getName());
+        user.setUsername(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword())); // Шифрование пароля
         // Установка роли по умолчанию
