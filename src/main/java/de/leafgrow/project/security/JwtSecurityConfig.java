@@ -1,7 +1,8 @@
 package de.leafgrow.project.security;
 
 
-import de.leafgrow.project.service.UserServiceImpl;
+import de.leafgrow.project.service.CustomUserDetailsService;
+import de.leafgrow.project.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +25,13 @@ public class JwtSecurityConfig {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Bean
     public SecurityFilterChain jwtSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -58,7 +62,7 @@ public class JwtSecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(jwtPasswordEncoder());
+        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(jwtPasswordEncoder());
         return authenticationManagerBuilder.build();
     }
 }
