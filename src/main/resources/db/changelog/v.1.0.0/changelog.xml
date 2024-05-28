@@ -9,7 +9,7 @@
     </changeSet>
 
 <!--    Для нового варианта БД от Василия-->
-    <include file="db.changelog-1.0-create-tables.yaml" relativeToChangelogFile="true"/>
-    <include file="db.changelog-1.1-add-foreign-keys.yaml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-1.0-create-tables.xml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-1.1-add-foreign-keys.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
