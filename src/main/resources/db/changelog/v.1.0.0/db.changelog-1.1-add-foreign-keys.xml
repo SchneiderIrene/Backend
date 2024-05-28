@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="chicagoist">
+        <addForeignKeyConstraint
+                baseTableName="user"
+                baseColumnNames="roles"
+                referencedTableName="user_role"
+                referencedColumnNames="id"
+                constraintName="fkey_user_to_user_role"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="2" author="chicagoist">
+        <addForeignKeyConstraint
+                baseTableName="pot"
+                baseColumnNames="user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                constraintName="fkey_pot_user_id_foreign"
+                onDelete="CASCADE"/>
+        <addForeignKeyConstraint
+                baseTableName="pot"
+                baseColumnNames="instruction_id"
+                referencedTableName="instruction"
+                referencedColumnNames="id"
+                constraintName="fkey_pot_instruction_id_foreign"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="3" author="chicagoist">
+        <addForeignKeyConstraint
+                baseTableName="confirm_code"
+                baseColumnNames="instruction_id"
+                referencedTableName="instruction"
+                referencedColumnNames="id"
+                constraintName="fkey_confirm_code_user_id_foreign"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="4" author="chicagoist">
+        <addForeignKeyConstraint
+                baseTableName="user_role"
+                baseColumnNames="user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                constraintName="fkey_user_role_user_id_foreign"
+                onDelete="CASCADE"/>
+        <addForeignKeyConstraint
+                baseTableName="user_role"
+                baseColumnNames="role_id"
+                referencedTableName="role"
+                referencedColumnNames="id"
+                constraintName="fkey_user_role_role_id_foreign"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>

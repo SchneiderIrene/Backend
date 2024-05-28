@@ -1,4 +1,3 @@
-# <!--    Для нового варианта БД от Василия-->
 databaseChangeLog:
   - changeSet:
       id: 1
@@ -79,7 +78,7 @@ databaseChangeLog:
                   type: BIGINT
                   constraints:
               - column:
-                  name: instructions_id
+                  name: instruction_id
                   type: BIGINT
                   constraints:
               - column:
