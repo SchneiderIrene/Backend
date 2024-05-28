@@ -36,8 +36,8 @@ public class SecurityConfig {
                 .sessionManagement(x -> x
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(x -> x
-                        .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/access").permitAll()//with token
-                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/access").permitAll()//with token
+                        .requestMatchers(HttpMethod.POST, "/api/register").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
