@@ -11,7 +11,7 @@ spring:
       hibernate:
         auto_quote_keyword: true
   mail:
-    username: leafgrow@gmail.com
+    username: leafgrow.project@gmail.com
     password: yhwnykriinuapexe
     host: smtp.gmail.com
     port: 587

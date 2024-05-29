@@ -40,7 +40,7 @@ public class EmailServiceImpl implements EmailService {
         String text = generateMessageText(user);
 
         try {
-            helper.setFrom("leafgrow@gmail.com");
+            helper.setFrom("leafgrow.project@gmail.com");
             helper.setTo(user.getEmail());
             helper.setSubject("Registration");
             helper.setText(text, true); // text has html format
