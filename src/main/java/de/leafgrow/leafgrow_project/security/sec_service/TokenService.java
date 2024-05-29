@@ -38,7 +38,7 @@ public class TokenService {
         Date expirationDate = Date.from(expirationInstant);
 
         return Jwts.builder()
-                .subject(user.getUsername())
+                .subject(user.getEmail())
                 .expiration(expirationDate)
                 .signWith(accessKey)
                 .claim("roles", user.getAuthorities())
@@ -52,7 +52,7 @@ public class TokenService {
         Date expirationDate = Date.from(expirationInstant);
 
         return Jwts.builder()
-                .subject(user.getUsername())
+                .subject(user.getEmail())
                 .expiration(expirationDate)
                 .signWith(refreshKey)
                 .compact();
@@ -95,7 +95,7 @@ public class TokenService {
     }
 
     public AuthInfo generateAuthInfo(Claims claims){
-        String username = claims.getSubject();
+        String email = claims.getSubject();
         List<LinkedHashMap<String, String>> roleList = (List<LinkedHashMap<String, String>>) claims.get("roles");
         Set<Role> roles = new HashSet<>();
         for(LinkedHashMap<String, String> roleEntry : roleList){
@@ -103,6 +103,6 @@ public class TokenService {
             Role role = repository.findByTitle(roleTitle);
             roles.add(role);
         }
-        return new AuthInfo(username, roles);
+        return new AuthInfo(email, roles);
     }
 }
