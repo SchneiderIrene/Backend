@@ -30,13 +30,13 @@ public class AuthService {
     }
 
     public TokenResponseDto login(@NonNull User inboundUser) throws AuthException {
-        String username = inboundUser.getUsername();
-        User foundUser = (User) userService.loadUserByUsername(username);
+        String email = inboundUser.getEmail();
+        User foundUser = (User) userService.loadUserByEmail(email);
 
         if(encoder.matches(inboundUser.getPassword(), foundUser.getPassword())){
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
-            refreshStorage.put(username, refreshToken);
+            refreshStorage.put(email, refreshToken);
             return new TokenResponseDto(accessToken, refreshToken);
         } else{
             throw new AuthException("Password is incorrect");
@@ -45,11 +45,11 @@ public class AuthService {
 
     public TokenResponseDto getAccessToken(@NonNull String inboundRefreshToken){
         Claims refreshClaims = tokenService.getRefreshClaims(inboundRefreshToken);
-        String username = refreshClaims.getSubject();
-        String savedRefreshToken = refreshStorage.get(username);
+        String email = refreshClaims.getSubject();
+        String savedRefreshToken = refreshStorage.get(email);
 
         if(inboundRefreshToken.equals(savedRefreshToken)){
-            User user = (User) userService.loadUserByUsername(username);
+            User user = (User) userService.loadUserByEmail(email);
             String accessToken = tokenService.generateAccessToken(user);
             return new TokenResponseDto(accessToken, null);
         }
@@ -59,9 +59,5 @@ public class AuthService {
     public AuthInfo getAuthInfo(){
         return (AuthInfo) SecurityContextHolder.getContext().getAuthentication();
     }
-
-
-
-
 
 }
