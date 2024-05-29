@@ -49,7 +49,6 @@ public class AuthController {
         }
     }
 
-
     @GetMapping("/logout")
     public void logout (HttpServletResponse response){
         Cookie cookie = new Cookie("Access-Token", null);

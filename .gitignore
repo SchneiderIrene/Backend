@@ -1,4 +1,6 @@
+/target
 /.idea
 /logs
-/target
-/resources/application.yml
+.DS_Store
+.idea/misc.xml
+src/.DS_Store

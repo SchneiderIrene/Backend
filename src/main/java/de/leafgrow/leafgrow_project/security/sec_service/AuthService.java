@@ -25,7 +25,7 @@ public class AuthService {
                        Map<String, String> refreshStorage, BCryptPasswordEncoder encoder) {
         this.userService = userService;
         this.tokenService = tokenService;
-        this.refreshStorage = new HashMap<>();
+        this.refreshStorage =new HashMap<>();
         this.encoder = encoder;
     }
 
