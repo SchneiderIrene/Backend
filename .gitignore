@@ -2,3 +2,4 @@
 /logs
 /target
 /resources/application.yml
+.DS_Store
