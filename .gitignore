@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+logs/
+src/.DS_Store
+target/.DS_Store
+/target
+/.idea
+/logs
