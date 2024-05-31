@@ -19,8 +19,11 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<User> getUserInfo(@RequestBody String email){
-        User user = service.loadUserByEmail(email);
+    public ResponseEntity<User> getUserInfo(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User user = (User) service.loadUserByUsername(username);
         return ResponseEntity.ok(user);
     }
 
