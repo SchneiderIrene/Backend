@@ -46,12 +46,17 @@ public class UserController {
 
     @PatchMapping("/profile/change-password")
     public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
 
-        User user = service.loadUserByEmail(email);
-        user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
-        service.save(user);
-        return ResponseEntity.ok(new Response("Password was successfully changed"));
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            User user = service.loadUserByEmail(email);
+            user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+            service.save(user);
+            return ResponseEntity.ok(new Response("Password was successfully changed"));
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
