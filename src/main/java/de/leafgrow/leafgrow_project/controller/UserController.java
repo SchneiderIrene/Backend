@@ -18,11 +18,6 @@ public class UserController {
         this.service = service;
     }
 
-/*    @GetMapping("/profile")
-    public ResponseEntity<User> getUserInfo(@RequestBody String email){
-        User user = service.loadUserByEmail(email);
-        return ResponseEntity.ok(user);
-    }*/
 
     @GetMapping("/profile")
     public ResponseEntity<User> getUserInfo() {
