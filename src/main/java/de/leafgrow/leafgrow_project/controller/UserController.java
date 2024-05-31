@@ -18,14 +18,34 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping("/profile")
+/*    @GetMapping("/profile")
     public ResponseEntity<User> getUserInfo(@RequestBody String email){
         User user = service.loadUserByEmail(email);
         return ResponseEntity.ok(user);
+    }*/
+
+    @GetMapping("/profile")
+    public ResponseEntity<User> getUserInfo() {
+
+        //  Fix метод getUserInfo для использования информации проверенного пользователя.
+        //  Удаляем параметр @RequestBody, поскольку email должен быть получен из контекста аутентификации.
+
+        try {
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userContent = authentication.getName();
+            User user = service.loadUserByEmail(userContent);
+            return ResponseEntity.ok(user);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+
     }
 
     @PatchMapping("/profile/change-password")
-    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword){
+    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
