@@ -1,5 +1,5 @@
-/.idea/
-/logs/
-/target/
-target
-
+/.idea
+/logs
+/target
+/resources/application.yml
+.DS_Store
