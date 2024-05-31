@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void save(User user) {
+        repository.save(user);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
         if(user == null){
@@ -56,4 +61,6 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+
 }

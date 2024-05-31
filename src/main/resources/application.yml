@@ -3,7 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/leafgrow_project
     username: postgres
     driver-class-name: org.postgresql.Driver
-    password: postgres
+    password: qwerty007
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
   jpa:
