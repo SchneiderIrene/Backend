@@ -18,23 +18,40 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping("/profile")
-    public ResponseEntity<User> getUserInfo(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
 
-        User user = (User) service.loadUserByUsername(username);
-        return ResponseEntity.ok(user);
+    @GetMapping("/profile")
+    public ResponseEntity<User> getUserInfo() {
+
+        //  Fix метод getUserInfo для использования информации проверенного пользователя.
+        //  Удаляем параметр @RequestBody, поскольку email должен быть получен из контекста аутентификации.
+
+        try {
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userContent = authentication.getName();
+            User user = service.loadUserByEmail(userContent);
+            return ResponseEntity.ok(user);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+
     }
 
     @PatchMapping("/profile/change-password")
-    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
+    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword) {
 
-        User user = service.loadUserByEmail(email);
-        user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
-        service.save(user);
-        return ResponseEntity.ok(new Response("Password was successfully changed"));
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            User user = service.loadUserByEmail(email);
+            user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+            service.save(user);
+            return ResponseEntity.ok(new Response("Password was successfully changed"));
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
