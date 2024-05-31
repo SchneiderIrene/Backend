@@ -40,8 +40,6 @@ public class UserController {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-
-
     }
 
     @PatchMapping("/profile/change-password")
