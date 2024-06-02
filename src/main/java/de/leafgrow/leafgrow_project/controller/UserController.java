@@ -26,12 +26,10 @@ public class UserController {
         //  Удаляем параметр @RequestBody, поскольку email должен быть получен из контекста аутентификации.
 
         try {
-
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String userContent = authentication.getName();
             User user = service.loadUserByEmail(userContent);
             return ResponseEntity.ok(user);
-
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
