@@ -39,9 +39,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/access").permitAll()//with token
                         .requestMatchers(HttpMethod.POST, "/api/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/register/confirm").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/auth/profile").authenticated() // Эндпоинт /api/auth/profile доступен для прошедших проверку подлинности пользователей
+                        .requestMatchers(HttpMethod.PATCH, "/api/auth/profile/change-password").authenticated()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
                 .build();
+
     }
 }
