@@ -1,6 +1,7 @@
 package de.leafgrow.leafgrow_project.service;
 
 import de.leafgrow.leafgrow_project.domain.entity.User;
+import de.leafgrow.leafgrow_project.repository.ConfirmationCodeRepository;
 import de.leafgrow.leafgrow_project.repository.UserRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
 import de.leafgrow.leafgrow_project.service.interfaces.RoleService;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -19,12 +21,18 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder encoder;
     private RoleService roleService;
     private EmailService emailService;
+    private ConfirmationCodeRepository confirmationCodeRepository;
 
-    public UserServiceImpl(UserRepository repository, BCryptPasswordEncoder encoder, RoleService roleService, EmailService emailService) {
+    public UserServiceImpl(UserRepository repository,
+                           BCryptPasswordEncoder encoder,
+                           RoleService roleService,
+                           EmailService emailService,
+                           ConfirmationCodeRepository confirmationCodeRepository) {
         this.repository = repository;
         this.encoder = encoder;
         this.roleService = roleService;
         this.emailService = emailService;
+        this.confirmationCodeRepository = confirmationCodeRepository;
     }
 
     @Override
@@ -51,6 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void save(User user) {
         repository.save(user);
     }
@@ -58,6 +67,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User user) {
         repository.delete(user);
+    }
+
+    @Override
+    public void deleteConfirmCodesByUser(User user) {
+        confirmationCodeRepository.deleteByUser(user);
     }
 
     @Override
