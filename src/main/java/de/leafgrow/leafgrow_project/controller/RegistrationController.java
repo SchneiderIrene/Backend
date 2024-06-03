@@ -5,6 +5,8 @@ import de.leafgrow.leafgrow_project.exception_handling.Response;
 import de.leafgrow.leafgrow_project.service.interfaces.ConfirmationService;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,6 +34,16 @@ public class RegistrationController {
         }
     }
 
+    @GetMapping("/resent")
+    public Response resendConfirmation(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        User user = userService.loadUserByEmail(email);
+        emailService.sendConfirmationEmail(user);
+        return new Response("Registration confirmation has been resent. Please check your mailbox.");
+    }
+
     @GetMapping("/confirm")
     public Response confirmAccount(@RequestParam String code) {
         try {
@@ -42,11 +54,5 @@ public class RegistrationController {
         }
     }
 
-
-//    @PostMapping
-//    public Response register(@RequestBody User user){
-//        service.register(user);
-//        return new Response("Registration complete. Please check your email.");
-//    }
 
 }

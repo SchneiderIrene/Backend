@@ -39,6 +39,8 @@ public class UserServiceImpl implements UserService {
         emailService.sendConfirmationEmail(user);
     }
 
+
+
     @Override
     public User loadUserByEmail(String email) {
         User user = repository.findByEmail(email);
@@ -51,6 +53,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         repository.save(user);
+    }
+
+    @Override
+    public void delete(User user) {
+        repository.delete(user);
     }
 
     @Override
