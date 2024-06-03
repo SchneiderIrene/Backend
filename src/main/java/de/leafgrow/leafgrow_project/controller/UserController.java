@@ -15,11 +15,12 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/api/auth")
 public class UserController {
     private UserService service;
+    private BCryptPasswordEncoder encoder;
 
-    public UserController(UserService service) {
+    public UserController(UserService service, BCryptPasswordEncoder encoder) {
         this.service = service;
+        this.encoder = encoder;
     }
-
 
     @GetMapping("/profile")
     public ResponseEntity<User> getUserInfo() {
@@ -64,10 +65,14 @@ public class UserController {
             String email = authentication.getName();
 
             User user = service.loadUserByEmail(email);
-            user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+            if (user == null) {
+                return ResponseEntity.status(404).body(new Response("User not found"));
+            }
+
+            user.setPassword(encoder.encode(newPassword));
             service.save(user);
 
-            return ResponseEntity.ok(new Response("Password was successfully changed"));
+            return ResponseEntity.ok(new Response("Password was successfully changed " + user.getPassword()));
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
