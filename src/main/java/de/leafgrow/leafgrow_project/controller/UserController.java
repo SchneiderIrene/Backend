@@ -66,6 +66,7 @@ public class UserController {
             User user = service.loadUserByEmail(email);
             user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
             service.save(user);
+
             return ResponseEntity.ok(new Response("Password was successfully changed"));
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
