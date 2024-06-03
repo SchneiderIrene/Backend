@@ -3,11 +3,13 @@ package de.leafgrow.leafgrow_project.controller;
 import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.exception_handling.Response;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -32,6 +34,25 @@ public class UserController {
             return ResponseEntity.ok(user);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/profile/delete-user")
+    public ResponseEntity<Response> deleteUser(){
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            User user = service.loadUserByEmail(email);
+
+            if(user == null){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found." );
+            }
+
+            service.delete(user);
+            return ResponseEntity.ok(new Response("User was successfully deleted"));
+        } catch (ResponseStatusException e){
+            throw e;
         }
     }
 
