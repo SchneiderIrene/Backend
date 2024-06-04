@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDateTime;
 
 public interface InstructionRepository extends JpaRepository<Instruction, Long> {
-    Instruction findByDay(LocalDateTime day);
+    Instruction findByDay(int day);
 }

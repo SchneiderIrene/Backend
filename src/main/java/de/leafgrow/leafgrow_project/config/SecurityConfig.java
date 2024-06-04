@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PATCH, "/api/auth/profile/change-password").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/auth/profile/delete-user").authenticated()
                         .requestMatchers(HttpMethod.GET, "/swagger-ui/", "/v3/api-docs/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/instructions/{day}").authenticated()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
