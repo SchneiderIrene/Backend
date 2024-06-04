@@ -5,6 +5,7 @@ import de.leafgrow.leafgrow_project.security.sec_dto.RefreshRequestDto;
 import de.leafgrow.leafgrow_project.security.sec_dto.TokenResponseDto;
 import de.leafgrow.leafgrow_project.security.sec_service.AuthService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,10 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Operation(
+            summary = "login",
+            description = "Authenticated user login"
+    )
     public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response){
         try {
             TokenResponseDto tokenDto = service.login(user);
@@ -36,6 +41,10 @@ public class AuthController {
     }
 
     @PostMapping("/access")
+    @Operation(
+            summary = "access",
+            description = "Getting new access token"
+    )
     public ResponseEntity<Object> getNewAccessToken(@RequestBody RefreshRequestDto request, HttpServletResponse response){
         try {
             TokenResponseDto tokenDto = service.getAccessToken(request.getRefreshToken());
@@ -51,6 +60,10 @@ public class AuthController {
     }
 
     @GetMapping("/logout")
+    @Operation(
+            summary = "logout",
+            description = "Authenticated user logout"
+    )
     public void logout (HttpServletResponse response){
         Cookie cookie = new Cookie("Access-Token", null);
         cookie.setPath("/");

@@ -5,6 +5,7 @@ import de.leafgrow.leafgrow_project.exception_handling.Response;
 import de.leafgrow.leafgrow_project.service.interfaces.ConfirmationService;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,10 @@ public class RegistrationController {
     }
 
     @PostMapping
+    @Operation(
+            summary = "register",
+            description = "Registration required user"
+    )
     public Response register(@RequestBody User user) {
         try {
             userService.register(user);
@@ -35,6 +40,10 @@ public class RegistrationController {
     }
 
     @GetMapping("/resent")
+    @Operation(
+            summary = "resent",
+            description = "Resenting confirmation to email"
+    )
     public Response resendConfirmation(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
@@ -45,6 +54,10 @@ public class RegistrationController {
     }
 
     @GetMapping("/confirm")
+    @Operation(
+            summary = "confirm",
+            description = "Confirming user's registration"
+    )
     public Response confirmAccount(@RequestParam String code) {
         try {
             User confirmedUser = confirmationService.confirmUser(code);
