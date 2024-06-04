@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add_instructions" author="vasilii">
+
+        <insert tableName="instruction">
+            <column name="content" value="Vorbereitung
+
+Eine der einfachsten und beliebtesten Methoden zur Keimung von Samen ist die Keimung in einem Plastikbehälter. Dafür benötigst du nur drei Dinge: 3%-iges Wasserstoffperoxid, Wasser und einen Plastikbecher oder eine Form.
+
+Verwende normales Trinkwasser ohne Kohlensäure, am besten aus dem Laden. Mineralwasser und Leitungswasser sind keine wünschenswerten Optionen, da sie viele unerwünschte Verunreinigungen enthalten.
+
+Dann musst du einige einfache Schritte ausführen:
+
+• Gieße 50 ml Wasser in den Becher oder die Form
+
+• Füge dem Wasser 10 Tropfen 3%-iges Wasserstoffperoxid hinzu
+
+• Mische gründlich
+
+• Lege die Samen ins Wasser
+
+• Stelle den Becher/die Form an einen dunklen, warmen Ort (z. B. einen Schrank oder eine Schublade)
+
+Nun warte 48 Stunden. Sobald die Wurzeln 5-10 mm lang sind (etwas größer als die Samen selbst), können sie eingepflanzt werden.
+
+Empfehlungen
+
+Versuche, die Temperatur im Raum zwischen 22-28°C zu halten. Nachts kann die Temperatur um 5-6 Grad gesenkt werden, das ist sogar vorteilhaft. Ein solches Klima fördert ein hervorragendes Wachstum und Blühen.
+Die Luftfeuchtigkeit sollte 60-70 % betragen.
+"/>
+            <column name="day" value="1"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Heute ist der zweite Tag des Keimens. Überprüfe weiterhin die Samen. Wenn einige Samen bereits gekeimt sind, ist es Zeit, alles für das Einpflanzen in die Erde vorzubereiten.
+
+Dafür benötigst du:
+
+1. Normale Plastikbecher oder Formen mit einem Volumen von 0,5 l.
+2. Erde: Für das Einpflanzen der Samen eignet sich am besten Erde für Rosen oder Zitronen. Der pH-Wert sollte zwischen 6 und 7 liegen. Idealerweise verwendest du Erde mit der Zugabe von Humus und Perlit.
+
+3. Perlit
+
+4. Handschuhe
+
+5. Pinzette
+
+6. Sprühflasche mit normalem Trinkwasser
+
+All dies kannst du in Gartencentern oder Blumenläden kaufen.
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="2"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Einpflanzen der Samen in die Erde
+
+Zuerst pflanze die Samen in Plastikbecher oder eine andere Form. So wird es dir einfacher fallen, die notwendigen Feuchtigkeitswerte von Luft und Grund zu erhalten.
+
+Hier ein kleiner Trick, der dir beim Umtopfen viel Zeit sparen kann: Nimm zwei Plastikbehälter, in die du pflanzen möchtest, und schneide einen davon längs in Streifen, bevor du ihn in den zweiten Behälter stellst und mit Erde füllst. So kannst du die Setzlinge beim Umtopfen später leichter mit dem Wurzelballen herausnehmen.
+
+Wie bereitet man die Erde vor?
+
+Mische die Erde mit Perlit im Verhältnis 50/50 und fülle sie in den Becher oder die Form. Die Basis für das Einpflanzen von Cannabis ist damit vorbereitet.
+
+Wie pflanzt man gekeimte Samen ein?
+
+Der Prozess ist einfach, erfordert jedoch große Sorgfalt, um die Wurzeln nicht zu beschädigen. Trage idealerweise Handschuhe und verwende eine Pinzette.
+
+Zum Einpflanzen benötigst du:
+
+• Bereite die Becher/Formen mit Erde wie im vorherigen Punkt beschrieben vor.
+
+• Mache in der Erde eine Vertiefung von etwa 0,5-1 cm.
+
+• Platziere die Samen vorsichtig mit einer Pinzette in die Vertiefung, wobei die Wurzel zur Seite steht.
+
+• Bedecke die Samen mit Erde und befeuchte den Boden um die Samen gründlich mit einem Sprühgerät.
+• Nimm einen weiteren Behälter, mache einige Löcher in den Grund, besprühe ihn mit Wasser und decke die Becher/Formen damit ab. Dies hilft dir, den idealen Feuchtigkeitsgehalt zu halten.
+
+• Stelle die Becher/Formen für 24-48 Stunden an einen warmen, dunklen Ort und dann unter eine Lichtquelle, bis die Keimlinge erscheinen.
+
+• Besprühe mit Wasser aus dem Sprühgerät, das mindestens einen Tag lang abgestanden ist. Und vergiss nicht, das Wasser sollte Zimmertemperatur haben, etwa 24-25°C.
+"/>
+            <column name="day" value="3"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Vegetationsphase
+
+Die Vegetationsphase ist eine wichtige Phase im Anbauzyklus von Cannabis, in der die Pflanze aktiv wächst und sich bis zur Blüte entwickelt. Hier sind einige wichtige Punkte, die Ihnen helfen, eine hervorragende Ernte zu erzielen!
+
+1. Lichtzyklus
+
+Denken Sie daran, dass Ihre grünen Schützlinge viel Licht zum Wachsen benötigen. Geben Sie ihnen 18 Stunden Licht und 6 Stunden Dunkelheit.
+
+2. Temperatur und Luftfeuchtigkeit
+
+Die optimalen Temperaturbedingungen für das Wachstum von Cannabis liegen im Bereich von 22-28°C, bei einer Luftfeuchtigkeit von 60-70%.
+"/>
+            <column name="day" value="4"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Pflege von Cannabis nach dem Pflanzen
+
+   1. Überprüfung der Grundfeuchtigkeit: Der Grund sollte feucht, aber nicht nass sein.Die goldene Mitte ist das Ziel!
+
+   2. Temperaturregelung: Halte die Temperatur tagsüber im Bereich von 22-28°C und senke sie nachts um 5-6°C. Verwende bei Bedarf Heizungen oder Wachstumslampen, um eine stabile Temperatur aufrechtzuerhalten.
+
+   3. Lichtregime: Stelle sicher, dass ausreichend Licht vorhanden ist. Wenn du Lampen verwendest, achte darauf, dass sie sich in einer Höhe von 5-10 cm über dem Boden befinden und 18 Stunden pro Tag leuchten.
+
+   4. Luftfeuchtigkeit: Halte die Luftfeuchtigkeit auf einem Niveau von 60-70%. Lüfte täglich, um Luftstagnation und Schimmelbildung zu vermeiden.
+
+"/>
+            <column name="day" value="5"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Bewässerung: Gieße vorsichtig den Grund aus einer Sprühflasche mit abgestandenem Wasser.
+
+   2. Temperaturregelung: Versuche, eine stabile Raumtemperatur von 22 bis 28°C aufrechtzuerhalten. Temperaturschwankungen können sich negativ auf das Keimen der Samen auswirken.
+
+   3. Lichtregime: Fahre fort, die Lichtverhältnisse mit Wachstumslampen zu gewährleisten. Halte sie für 18 Stunden pro Tag eingeschaltet und platziere sie 5-10 cm über der Bodenoberfläche."/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="6"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Am vierten Tag nach dem Einpflanzen von Cannabissamen in den Grund solltest du weiterhin die Wachstumsbedingungen überwachen und die erforderliche Pflege sicherstellen. Hier sind einige Empfehlungen:
+
+1. Beleuchtung: Überprüfe, ob genügend Licht vorhanden ist.
+
+2. Temperatur: Stelle sicher, dass die Temperatur im optimalen Bereich bleibt.
+
+3. Belüftung: Eine gute Belüftung hilft, Überhitzung zu vermeiden und für einen ausreichenden Luftaustausch zu sorgen."/>
+            <column name="day" value="7"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Es ist Zeit, die ersten Sprossen zu beobachten, vorausgesetzt, du hast allen Empfehlungen gefolgt.
+
+Was tun, wenn die ersten Sprossen auftauchen?
+
+Gieße sie am Anfang vorsichtig. Übertreibe es nicht mit Wasser, sondern mache es regelmäßig (alle drei Tage). Gieße, wenn die Erde leicht austrocknet. Achte darauf, dass du den Boden, nicht die Sprossen, besprüht. Achte auch darauf, dass das Wasser den Grund um die Sprossen nicht wegspült und die Wurzeln nicht freilegt.
+
+Behandle die Sämlinge vorsichtig, sie sind noch klein und hilflos. Vermeide in dieser Zeit übermäßiges Anfassen und Umlagern, sie sind wirklich zart, und zu viel Einwirkung kann sie beschädigen.
+
+Denke daran, dass es in den ersten Tagen nach dem Erscheinen der Sämlinge wichtig ist, für sie eine liebevolle und fürsorgliche Pflege sicherzustellen, damit sie ihr gesundes Wachstum fortsetzen können.
+"/>
+            <column name="day" value="8"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Sprühe die Sämlinge vorsichtig aus dem Sprühgerät ein, vergiss nicht, dass die Sämlinge warmes Wasser mögen, optimal sind 24-25°C.
+
+2. Stelle sicher, dass die Sämlinge tagsüber genügend Licht erhalten. Überprüfe, ob das Licht gleichmäßig auf alle Sämlinge verteilt ist.
+
+3. Halte die warme Temperatur weiterhin aufrecht, idealerweise im Bereich von 22 bis 28°C, nachts um einige Grade absenken.
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="9"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Stelle sicher, dass um die Sämlinge herum eine gute Belüftung herrscht, um Pilzbefall zu vermeiden und einen ausreichenden Zugang zu frischer Luft zu gewährleisten.
+
+2. Halte die Luftfeuchtigkeit auf einem optimalen Niveau für die Gesundheit der Pflanzen.
+
+3. Überprüfe die ausreichende Lichtmenge und beachte die empfohlene Temperatur von 22 bis 28°C.
+"/>
+            <column name="day" value="10"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Stelle sicher, dass deine Pflanzen alles haben, was sie für gesundes Wachstum benötigen: die richtige Temperatur, Luftfeuchtigkeit und Beleuchtung in ihrem Wachstumsraum. Achte darauf, dass die Luft gut zirkuliert.
+
+2. Wenn Unkraut im Grund erscheint, entferne es vorsichtig, damit es den Sämlingen nicht die Nährstoffe entzieht und keinen Platz zum Wachsen einnimmt.
+"/>
+            <column name="day" value="11"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Vorsichtig sprühe die Sämlinge mit abgestandenem Wasser aus dem Zerstäuber.
+
+2. Stelle sicher, dass alle Sämlinge ausreichend Licht, Feuchtigkeit und Wärme erhalten. Vergiss nicht, die Temperatur und Luftfeuchtigkeit im Raum zu überprüfen, in dem sie wachsen.
+
+3. Wenn noch irgendwo Unkraut übrig ist, entferne es, damit es deinen Pflanzen nicht schadet.
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="12"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Fahre fort, dich um deine Sämlinge zu kümmern. Stelle sicher, dass sie genug Licht, Wasser und Wärme bekommen. Pflanzen mögen es, wenn man sich um sie kümmert!
+
+2. Wenn die Sämlinge groß genug werden, stütze sie ab. Verwende sanfte Stützen oder Spaliere, um ein Verbiegen oder Verdrehen der Stängel zu verhindern.
+"/>
+            <column name="day" value="13"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="1. Wenn du künstliche Beleuchtung verwendest, achte darauf, dass die Lampen in einem angemessenen Abstand zu den Pflanzen angebracht sind, um Überhitzung oder Austrocknung zu vermeiden.
+
+2. Lüfte den Raum, in dem sich deine grünen Schützlinge befinden, damit stets frische Luft vorhanden ist.
+
+3. Wenn die Sämlinge sich zum Licht neigen, ist das ein Zeichen dafür, dass sie mehr oder besser verteiltes Licht benötigen. Stelle die Beleuchtung ein oder drehe die Pflanzen, damit sie gleichmäßig wachsen und von allen Seiten Licht erhalten.
+"/>
+            <column name="day" value="14"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Es ist Zeit für einen wichtigen Schritt! Das Umtopfen der Sämlinge in einen Topf.
+
+Was du brauchst:
+
+1. Ein Topf mit einem Fassungsvermögen von 10-15 Litern.
+
+2. Umtopferde.
+
+3. Ein Spaten oder eine Schaufel zum Umpflanzen der Pflanzen.
+
+4. Wasser zum Gießen.
+
+5. Bei Bedarf Zusätze oder Dünger.
+
+6. Handschuhe, um deine Hände vor Erde und Schmutz zu schützen.
+
+Zuerst: Überprüfe die Erde. Sie sollte leicht feucht, aber nicht trocken sein. Ausgetrocknete Klumpen können die Wurzeln beschädigen. Zwei Tage nach der letzten Bewässerung ist die ideale Zeit für das Umtopfen. Entferne nicht die Erde von den Wurzeln, das ist ihr Schutz.
+
+Wie man jetzt die Sämlinge in den Grund umsetzt:
+
+- Nimm einen Spatel oder etwas Flaches und fahre entlang der Wände des Topfes, um die Erde zu lockern.
+
+- Befeuchte die Erde im neuen Topf. Sie sollte sich leicht in der Faust halten lassen, aber beim Entspannen auseinanderfallen. Lasse dabei etwa 10 cm Platz bis zum Rand des Topfes.
+
+- Mache eine Grube für das Wurzelsystem. Drücke sie mit dem alten Topf für eine ideale Form.
+
+- Lege deine Hand so, dass der Stängel zwischen den Fingern liegt, und kippe den Behälter um. Die Pflanze mit Erde sollte leicht herauskommen. Wenn nicht, klopfe an die Wände und den Boden des Topfes.
+
+- Setze den Sämling in das vorbereitete Loch und bedecke ihn mit Erde. Die Sämlinge sollten einige Zentimeter tiefer als die Samen gepflanzt werden.
+
+- Drücke die Erde leicht an, um den Sämling gut zu verankern.
+
+- Gieße die Sämlinge leicht an.
+
+Herzlichen Glückwunsch zur erfolgreichen Umpflanzung!
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="17"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Vor der Düngung der Pflanzen: Tipps und Empfehlungen
+
+1. Beginne mit der halben Dosis: Um Überdüngung zu vermeiden, starte mit der Hälfte der empfohlenen Düngerdosis und beobachte die Reaktion der Pflanzen.
+
+2. Regelmäßigkeit: Dünger sollten regelmäßig, aber nicht zu häufig angewendet werden. Normalerweise geschieht dies einmal pro Woche oder alle zwei Wochen.
+
+3. Wechselnde Bewässerung: Bewässere die Pflanzen abwechselnd mit reinem Wasser und Dünger, um eine Ansammlung von Salzen im Boden zu vermeiden.
+
+Empfohlene Düngemittel
+
+Stickstoff (N): Fördert das Blattwachstum.
+
+Phosphor (P): Unterstützt die Entwicklung der Wurzeln und den allgemeinen Stoffwechsel.
+
+Kalium (K): Wichtig für die Pflanzengesundheit, stärkt die Stängel und das Immunsystem.
+
+Düngeanleitung für Cannabis
+
+1. Wähle das richtige Düngemittel: Verwende für die vegetative Phase Düngemittel mit einem hohen Stickstoffgehalt.
+
+2. Bereite die Lösung vor: Befolge die Anweisungen auf der Verpackung, mische das Dünger-Konzentrat mit Wasser. Beginne mit der Hälfte der empfohlenen Dosierung, um die Pflanzen nicht zu überfüttern.
+
+3. Bewässere die Pflanzen: Gieße die Pflanzen mit einer Düngerlösung, wie du es normalerweise mit Wasser tust. Stelle sicher, dass der gesamte Boden eine gleichmäßige Menge der Lösung erhält.
+
+4. Beobachte die Pflanzen: Achte auf den Zustand der Blätter und die allgemeine Gesundheit der Pflanzen. Die Blätter sollten grün und kräftig sein. Anzeichen für eine Überdüngung: Verbrennung der Blattspitzen, Verdrehen der Blätter, verlangsamtes Wachstum.
+
+5. Anpassung: Wenn du Anzeichen für eine Überdüngung siehst, reduziere die Dosierung. Wenn die Pflanzen gesund sind, kannst du die Dosierung allmählich bis zur vollständigen empfohlenen Menge erhöhen.
+
+6. Bewässere mit klarem Wasser: Zwischen den Düngungen bewässere die Pflanzen mit klarem Wasser, um die Ansammlung von Salzen zu verhindern.
+
+Jetzt bist du bereit, deine Pflanzen zu düngen!
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="34"/>
+            <column name="image" value="image"/>
+        </insert>
+
+        <insert tableName="instruction">
+            <column name="content" value="Übergang zur Blühphase
+
+1. Umstellung auf den Lichtzyklus 12/12:
+Um die Blühphase einzuleiten, verkürze den Lichttag auf 12 Stunden Licht und 12 Stunden Dunkelheit. Dies ist wichtig für photoperiodische Cannabis-Sorten, damit sie mit der Blüte beginnen. Wenn die Pflanze selbstblühend ist, wird sie unabhängig vom Lichtzyklus automatisch zu blühen beginnen.
+
+Allmähliche Anpassung: Du kannst die Anzahl der Lichtstunden allmählich verkürzen, um die Pflanzen nicht zu stressen.
+
+2. Vollständige Dunkelheit: Es ist wichtig, dass die Pflanzen während der Dunkelphase vollständig dunkel stehen, ohne jegliche Lichtleckagen, die den Beginn der Blüte stören könnten.
+
+Tipps zur Düngung:
+
+1. Auswahl des Düngers:
+
+Verwende Düngemittel mit einem hohen Gehalt an Phosphor und Kalium (N-P-K mit hohen Werten für P und K).
+Beispiele: Blütendünger, Blütenstimulatoren.
+
+2. Düngeplan:
+
+Beginne damit, die Pflanzen einmal pro Woche zu düngen, und erhöhe die Dosierung allmählich gemäß den Empfehlungen auf der Verpackung des Düngemittels. Achte auf die Reaktion auf den Dünger und passe die Dosierung bei Bedarf an.
+
+Allgemeine Empfehlungen:
+
+Überwache den Feuchtigkeitsgrad: Halte die Luftfeuchtigkeit während der Blütephase auf etwa 40-50 %.
+
+Belüfte den Raum: Stelle sicher, dass eine gute Belüftung vorhanden ist, um Schimmel- und Pilzbefall zu verhindern.
+
+Wenn alles richtig gemacht wurde, wirst du innerhalb einer Woche nach der Umstellung auf den 12/12-Lichtzyklus die ersten Blütenknospen sehen!
+"/>
+            <column name="is_important" value="true"/>
+            <column name="day" value="50"/>
+            <column name="image" value="image"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

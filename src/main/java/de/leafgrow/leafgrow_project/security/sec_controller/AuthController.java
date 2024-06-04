@@ -4,6 +4,7 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.security.sec_dto.RefreshRequestDto;
 import de.leafgrow.leafgrow_project.security.sec_dto.TokenResponseDto;
 import de.leafgrow.leafgrow_project.security.sec_service.AuthService;
+import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
