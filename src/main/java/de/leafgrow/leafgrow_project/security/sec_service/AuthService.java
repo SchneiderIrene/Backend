@@ -32,7 +32,7 @@ public class AuthService {
 
     public TokenResponseDto login(@NonNull LoginRequestDto loginRequest) throws AuthException {
         String email = loginRequest.getEmail();
-        User foundUser = (User) userService.loadUserByEmail(email);
+        User foundUser = userService.loadUserByEmail(email);
 
         if(encoder.matches(loginRequest.getPassword(), foundUser.getPassword())){
             String accessToken = tokenService.generateAccessToken(foundUser);
@@ -50,7 +50,7 @@ public class AuthService {
         String savedRefreshToken = refreshStorage.get(email);
 
         if(inboundRefreshToken.equals(savedRefreshToken)){
-            User user = (User) userService.loadUserByEmail(email);
+            User user = userService.loadUserByEmail(email);
             String accessToken = tokenService.generateAccessToken(user);
             return new TokenResponseDto(accessToken, null);
         }

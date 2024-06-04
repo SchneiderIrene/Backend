@@ -2,6 +2,7 @@ package de.leafgrow.leafgrow_project.controller;
 
 import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.exception_handling.Response;
+import de.leafgrow.leafgrow_project.security.sec_dto.ChangePasswordRequestDto;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -76,7 +77,7 @@ public class UserController {
             summary = "change user password",
             description = "Changing current user's password"
     )
-    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword) {
+    public ResponseEntity<Response> changeUserPassword(@RequestBody ChangePasswordRequestDto newPassword) {
 
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -87,7 +88,7 @@ public class UserController {
                 return ResponseEntity.status(404).body(new Response("User not found"));
             }
 
-            user.setPassword(encoder.encode(newPassword));
+            user.setPassword(encoder.encode(newPassword.getNewPassword()));
             service.save(user);
 
             return ResponseEntity.ok(new Response("Password was successfully changed " + user.getPassword()));

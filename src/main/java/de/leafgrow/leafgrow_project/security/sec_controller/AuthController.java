@@ -31,11 +31,6 @@ public class AuthController {
     )
     public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequest, HttpServletResponse response){
         try {
-            User userLogin = userService.loadUserByEmail(loginRequest.getEmail());
-            if (userLogin == null) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with provided email not found");
-            }
-
             TokenResponseDto tokenDto = service.login(loginRequest);
             if (tokenDto == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to generate token");
