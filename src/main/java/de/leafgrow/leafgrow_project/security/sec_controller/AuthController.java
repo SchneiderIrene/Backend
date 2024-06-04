@@ -1,6 +1,7 @@
 package de.leafgrow.leafgrow_project.security.sec_controller;
 
 import de.leafgrow.leafgrow_project.domain.entity.User;
+import de.leafgrow.leafgrow_project.security.sec_dto.LoginRequestDto;
 import de.leafgrow.leafgrow_project.security.sec_dto.RefreshRequestDto;
 import de.leafgrow.leafgrow_project.security.sec_dto.TokenResponseDto;
 import de.leafgrow.leafgrow_project.security.sec_service.AuthService;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 public class AuthController {
     private AuthService service;
+    private UserService userService;
 
-    public AuthController(AuthService service) {
+    public AuthController(AuthService service, UserService userService) {
         this.service = service;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -26,9 +29,18 @@ public class AuthController {
             summary = "login",
             description = "Authenticated user login"
     )
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response){
+    public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequest, HttpServletResponse response){
         try {
-            TokenResponseDto tokenDto = service.login(user);
+            User userLogin = userService.loadUserByEmail(loginRequest.getEmail());
+            if (userLogin == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with provided email not found");
+            }
+
+            TokenResponseDto tokenDto = service.login(loginRequest);
+            if (tokenDto == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to generate token");
+            }
+
             Cookie cookie = new Cookie("Access-Token", tokenDto.getAccessToken());
             cookie.setPath("/");
             //http-only cookie

@@ -2,6 +2,7 @@ package de.leafgrow.leafgrow_project.security.sec_service;
 
 import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.security.AuthInfo;
+import de.leafgrow.leafgrow_project.security.sec_dto.LoginRequestDto;
 import de.leafgrow.leafgrow_project.security.sec_dto.TokenResponseDto;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import io.jsonwebtoken.Claims;
@@ -29,11 +30,11 @@ public class AuthService {
         this.encoder = encoder;
     }
 
-    public TokenResponseDto login(@NonNull User inboundUser) throws AuthException {
-        String email = inboundUser.getEmail();
+    public TokenResponseDto login(@NonNull LoginRequestDto loginRequest) throws AuthException {
+        String email = loginRequest.getEmail();
         User foundUser = (User) userService.loadUserByEmail(email);
 
-        if(encoder.matches(inboundUser.getPassword(), foundUser.getPassword())){
+        if(encoder.matches(loginRequest.getPassword(), foundUser.getPassword())){
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
             refreshStorage.put(email, refreshToken);
