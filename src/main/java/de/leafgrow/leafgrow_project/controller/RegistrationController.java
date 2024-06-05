@@ -6,9 +6,12 @@ import de.leafgrow.leafgrow_project.service.interfaces.ConfirmationService;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/register")
@@ -30,7 +33,7 @@ public class RegistrationController {
             summary = "register",
             description = "Registration required user"
     )
-    public Response register(@RequestBody User user) {
+    public Response register(@RequestBody User user){
         try {
             userService.register(user);
             return new Response("Регистрация успешно завершена. Проверьте ваш email для завершения процесса.");

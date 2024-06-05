@@ -14,7 +14,8 @@ public class InstructionServiceImpl implements InstructionService {
     }
 
     @Override
-    public Instruction getInstructionByDay(int day) {
+    public Instruction getInstructionForDay(int day) {
         return repository.findByDay(day);
     }
+
 }

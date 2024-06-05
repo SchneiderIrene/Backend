@@ -23,6 +23,6 @@ public class InstructionController {
             description = "Getting instruction by day of the cycle"
     )
     public ResponseEntity<Instruction> getInstructionByDay(@PathVariable int day) {
-        return ResponseEntity.ok(service.getInstructionByDay(day));
+        return ResponseEntity.ok(service.getInstructionForDay(day));
     }
 }
