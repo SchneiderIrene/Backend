@@ -21,12 +21,12 @@ public class Instruction {
     private boolean isImportant;
 
     @Column(name = "day")
-    private LocalDateTime day;
+    private int day;
 
     @Column(name = "image")
     private String image;
 
-    public Instruction(Long id, String content, boolean isImportant, LocalDateTime day, String image) {
+    public Instruction(Long id, String content, boolean isImportant, int day, String image) {
         this.id = id;
         this.content = content;
         this.isImportant = isImportant;
@@ -61,11 +61,11 @@ public class Instruction {
         isImportant = important;
     }
 
-    public LocalDateTime getDay() {
+    public int getDay() {
         return day;
     }
 
-    public void setDay(LocalDateTime day) {
+    public void setDay(int day) {
         this.day = day;
     }
 
@@ -85,9 +85,9 @@ public class Instruction {
         Instruction that = (Instruction) o;
 
         if (isImportant != that.isImportant) return false;
+        if (day != that.day) return false;
         if (!Objects.equals(id, that.id)) return false;
         if (!Objects.equals(content, that.content)) return false;
-        if (!Objects.equals(day, that.day)) return false;
         return Objects.equals(image, that.image);
     }
 
@@ -96,14 +96,14 @@ public class Instruction {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (isImportant ? 1 : 0);
-        result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + day;
         result = 31 * result + (image != null ? image.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return String.format("Instruction: ID - %d, content - %s, day - %s, image - %s, important - %s",
+        return String.format("Instruction: ID - %d, content - %s, day - %d, image - %s, important - %s",
                 id, content, day, image, isImportant ? "yes" : "no");
     }
 }
