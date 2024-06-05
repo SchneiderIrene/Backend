@@ -1,9 +1,12 @@
 /.idea
-/logs
-/target
-/resources/application.yml
-.DS_Store
-/.idea/
-/logs/
-/target/
+/logs	/logs
+
+/target	/target
+/resources/application.yml	/resources/application.yml
+.DS_Store	.DS_Store
+# .DS_Store
+# .idea/misc.xml
+# src/.DS_Store
+# src/main/resources/application.yml
+
 
