@@ -51,6 +51,24 @@ public class EmailServiceImpl implements EmailService {
         sender.send(message);
     }
 
+    @Override
+    public void sendImportantEmail(User user) {
+        MimeMessage message = sender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+        String text = generateImportantMessageText(user);
+
+        try {
+            helper.setFrom("leafgrow.project@gmail.com");
+            helper.setTo(user.getEmail());
+            helper.setSubject("Advice!");
+            helper.setText(text, true); // text has html format
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        sender.send(message);
+    }
+
     private String generateMessageText(User user){
         try {
             Template template = mailConfiguration
@@ -61,6 +79,21 @@ public class EmailServiceImpl implements EmailService {
             model.put("name", user.getUsername());
             model.put("link", "http://localhost:8080/api/register/confirm?code=" + code); //name server
             //model.put("link", "http://localhost:5173/betweenpage/register/confirm?code=" + code); //for Iren
+
+            return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateImportantMessageText(User user){
+        try {
+            Template template = mailConfiguration
+                    .getTemplate("important_message_mail.ftlh"); //freemarker template package
+            String code = confirmationService.generateConfirmationCode(user);
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("name", user.getUsername());
 
             return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
         } catch (Exception e){
