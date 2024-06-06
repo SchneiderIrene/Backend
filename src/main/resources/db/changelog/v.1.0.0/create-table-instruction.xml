@@ -17,7 +17,7 @@
 
             <column name="is_important" type="boolean" defaultValueBoolean="false"/>
 
-            <column name="day" type="varchar(32)">
+            <column name="day" type="int">
                 <constraints unique="true"/>
             </column>
 

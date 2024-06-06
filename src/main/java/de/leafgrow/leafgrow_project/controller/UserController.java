@@ -2,7 +2,10 @@ package de.leafgrow.leafgrow_project.controller;
 
 import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.exception_handling.Response;
+import de.leafgrow.leafgrow_project.security.sec_dto.ChangePasswordRequestDto;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "UserController", description = "Controller for some operation with user.")
 public class UserController {
     private UserService service;
     private BCryptPasswordEncoder encoder;
@@ -26,6 +30,10 @@ public class UserController {
     }
 
     @GetMapping("/profile")
+    @Operation(
+            summary = "get user info",
+            description = "Receiving info about current user"
+    )
     public ResponseEntity<User> getUserInfo() {
 
         //  Fix метод getUserInfo для использования информации проверенного пользователя.
@@ -42,6 +50,10 @@ public class UserController {
     }
 
     @DeleteMapping("/profile/delete-user")
+    @Operation(
+            summary = "delete user",
+            description = "Deleting current user"
+    )
     public ResponseEntity<Response> deleteUser(){
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -61,7 +73,11 @@ public class UserController {
     }
 
     @PatchMapping("/profile/change-password")
-    public ResponseEntity<Response> changeUserPassword(@RequestBody String newPassword) {
+    @Operation(
+            summary = "change user password",
+            description = "Changing current user's password"
+    )
+    public ResponseEntity<Response> changeUserPassword(@RequestBody ChangePasswordRequestDto newPassword) {
 
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -72,7 +88,7 @@ public class UserController {
                 return ResponseEntity.status(404).body(new Response("User not found"));
             }
 
-            user.setPassword(encoder.encode(newPassword));
+            user.setPassword(encoder.encode(newPassword.getNewPassword()));
             service.save(user);
 
             return ResponseEntity.ok(new Response("Password was successfully changed " + user.getPassword()));
