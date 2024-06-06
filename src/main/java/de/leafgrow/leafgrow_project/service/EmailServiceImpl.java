@@ -51,6 +51,11 @@ public class EmailServiceImpl implements EmailService {
         sender.send(message);
     }
 
+    @Override
+    public void sendImportantDayEmail(String email) {
+        // TODO
+    }
+
     private String generateMessageText(User user){
         try {
             Template template = mailConfiguration
