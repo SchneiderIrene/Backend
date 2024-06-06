@@ -91,7 +91,7 @@ public class UserController {
             user.setPassword(encoder.encode(newPassword.getNewPassword()));
             service.save(user);
 
-            return ResponseEntity.ok(new Response("Password was successfully changed " + user.getPassword()));
+            return ResponseEntity.ok(new Response("Password was successfully changed"));
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

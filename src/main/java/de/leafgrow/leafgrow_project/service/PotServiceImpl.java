@@ -8,10 +8,15 @@ import de.leafgrow.leafgrow_project.repository.PotRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
 import de.leafgrow.leafgrow_project.service.interfaces.InstructionService;
 import de.leafgrow.leafgrow_project.service.interfaces.PotService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import java.util.List;
 
@@ -20,12 +25,20 @@ public class PotServiceImpl implements PotService {
     private static final int MAX_DAYS = 30;
     private PotRepository potRepository;
     private InstructionRepository instructionRepository;
+    private InstructionService instructionService;
+    private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private EmailService emailService;
 
 
-    public PotServiceImpl(PotRepository potRepository, InstructionRepository instructionRepository) {
+
+    public PotServiceImpl(PotRepository potRepository,
+                          InstructionRepository instructionRepository,
+                          InstructionService instructionService,
+                          @Lazy EmailService emailService) {
         this.potRepository = potRepository;
         this.instructionRepository = instructionRepository;
+        this.instructionService = instructionService;
+        this.emailService = emailService;
     }
 
     @Override
@@ -54,6 +67,30 @@ public class PotServiceImpl implements PotService {
         pot.setActive(true);
         pot.setInstruction(instructionRepository.findByDay(1));
         potRepository.save(pot);
+
+        scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
+        //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.SECONDS);
+    }
+
+    private void updateInstruction(Pot pot) {
+        if (pot.isActive()) {
+            int currentDay = pot.getInstruction().getDay();
+            Instruction nextInstruction = instructionService.getInstructionForDay(currentDay + 1);
+
+            if (nextInstruction != null) {
+                pot.setInstruction(nextInstruction);
+                potRepository.save(pot);
+
+                // Отправка письма, если инструкция важна
+                if (nextInstruction.isImportant()) {
+                    emailService.sendImportantEmail(pot.getUser());
+                }
+            } else {
+                // Если инструкции на следующий день нет, деактивировать горшок или обнулить его
+                pot.setActive(false);
+                potRepository.save(pot);
+            }
+        }
     }
 
     public void resetPot(Pot pot) {

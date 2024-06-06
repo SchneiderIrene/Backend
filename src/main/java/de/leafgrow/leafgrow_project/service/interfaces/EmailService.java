@@ -4,6 +4,7 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 
 public interface EmailService {
     void sendConfirmationEmail(User user);
+    void sendImportantEmail(User user);
 
     void sendImportantDayEmail(String email);
 }
