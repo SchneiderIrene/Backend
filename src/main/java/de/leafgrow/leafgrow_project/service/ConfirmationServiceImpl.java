@@ -5,6 +5,7 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.repository.ConfirmationCodeRepository;
 import de.leafgrow.leafgrow_project.repository.UserRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.ConfirmationService;
+import de.leafgrow.leafgrow_project.service.interfaces.PotService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,10 +16,12 @@ public class ConfirmationServiceImpl implements ConfirmationService {
 
     private ConfirmationCodeRepository repository;
     private UserRepository userRepository;
+    private PotService potService;
 
-    public ConfirmationServiceImpl(ConfirmationCodeRepository repository, UserRepository userRepository) {
+    public ConfirmationServiceImpl(ConfirmationCodeRepository repository, UserRepository userRepository, PotService potService) {
         this.repository = repository;
         this.userRepository = userRepository;
+        this.potService = potService;
     }
 
     @Override
@@ -30,7 +33,9 @@ public class ConfirmationServiceImpl implements ConfirmationService {
 
         User user = confirmationCode.getUser();
         user.setActive(true);
+        potService.createPotsForUser(user);
         userRepository.save(user);
+
 
         return user;
     }

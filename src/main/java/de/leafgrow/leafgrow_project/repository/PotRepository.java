@@ -1,8 +1,14 @@
 package de.leafgrow.leafgrow_project.repository;
 
 import de.leafgrow.leafgrow_project.domain.entity.Pot;
+import de.leafgrow.leafgrow_project.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PotRepository extends JpaRepository<Pot, Long> {
+import java.util.List;
 
+public interface PotRepository extends JpaRepository<Pot, Long> {
+    List<Pot> findByUser(User user);
+    List<Pot> findByUserId(Long userId);
+
+    List<Pot> findAllByIsActive(boolean b);
 }
