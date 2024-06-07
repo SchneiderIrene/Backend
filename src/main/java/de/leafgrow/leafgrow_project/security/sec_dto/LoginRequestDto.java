@@ -3,6 +3,7 @@ package de.leafgrow.leafgrow_project.security.sec_dto;
 public class LoginRequestDto {
     private String email;
     private String password;
+
     public String getEmail() {
         return email;
     }

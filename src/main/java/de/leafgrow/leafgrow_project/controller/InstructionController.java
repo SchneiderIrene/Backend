@@ -17,6 +17,7 @@ public class InstructionController {
     public InstructionController(InstructionService service) {
         this.service = service;
     }
+
     @GetMapping("/{day}")
     @Operation(
             summary = "get instruction by day",

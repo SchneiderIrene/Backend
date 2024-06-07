@@ -32,15 +32,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    public BCryptPasswordEncoder encoder(){
+    public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer:: disable)
+                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(x -> x
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(x -> x
@@ -51,36 +50,39 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/auth/profile").authenticated() // Эндпоинт /api/auth/profile доступен для прошедших проверку подлинности пользователей
                         .requestMatchers(HttpMethod.PATCH, "/api/auth/profile/change-password").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/auth/profile/delete-user").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/swagger-ui/", "/v3/api-docs/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/instructions/{day}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/pots/{potId}/instruction").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/{potId}/refresh").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/{potId}/activate").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/create").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/pots/{potId}/skip-day").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/pots/user/{userId}/pots").authenticated()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-
     }
 
     @Bean
     public OpenAPI openAPI() {
-        return new OpenAPI().addSecurityItem(new SecurityRequirement().
-                        addList("Bearer Authentication"))
-                .components(new Components().addSecuritySchemes
-                        ("Bearer Authentication", createAPIKeyScheme()))
+        return new OpenAPI()
+                .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
+                .components(new Components().addSecuritySchemes("Bearer Authentication", createAPIKeyScheme()))
                 .info(new Info().title("JWT demo app")
                         .description("Demo application for JSON web tokens")
-                        .version("1.0.0").contact(new Contact().name("LeafGrow")
-                                .email( "leafgrow.project@gmail.com").url("https://github.com/LeafGrow"))
+                        .version("1.0.0")
+                        .contact(new Contact().name("LeafGrow")
+                                .email("leafgrow.project@gmail.com")
+                                .url("https://github.com/LeafGrow"))
                         .license(new License().name("@LeafGrow")
                                 .url("https://github.com/LeafGrow")));
     }
+
     private SecurityScheme createAPIKeyScheme() {
-        return new SecurityScheme().type(SecurityScheme.Type.HTTP)
+        return new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
                 .bearerFormat("JWT")
                 .scheme("bearer");
     }
-
 }
