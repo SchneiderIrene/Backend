@@ -17,5 +17,4 @@ public class InstructionServiceImpl implements InstructionService {
     public Instruction getInstructionForDay(int day) {
         return repository.findByDay(day);
     }
-
 }
