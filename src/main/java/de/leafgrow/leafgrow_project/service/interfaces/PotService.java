@@ -8,12 +8,13 @@ import java.util.List;
 
 public interface PotService {
     void refreshPot(Pot pot);
-    void createPotsForUser(User user);
-    void activatePot(Long potId);
 
-    void resetPot(Pot pot);
+    void createPotsForUser(User user);
+
+    void activatePot(Long potId);
 
     void skipDay(Pot pot);
 
     List<Pot> findPotsByUserId(Long userId);
+
 }

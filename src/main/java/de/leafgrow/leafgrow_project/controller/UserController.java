@@ -54,20 +54,20 @@ public class UserController {
             summary = "delete user",
             description = "Deleting current user"
     )
-    public ResponseEntity<Response> deleteUser(){
+    public ResponseEntity<Response> deleteUser() {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 
             User user = service.loadUserByEmail(email);
 
-            if(user == null){
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found." );
+            if (user == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found.");
             }
 
             service.delete(user);
             return ResponseEntity.ok(new Response("User was successfully deleted"));
-        } catch (ResponseStatusException e){
+        } catch (ResponseStatusException e) {
             throw e;
         }
     }

@@ -29,7 +29,7 @@ public class AuthController {
             summary = "login",
             description = "Authenticated user login"
     )
-    public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequest, HttpServletResponse response){
+    public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequest, HttpServletResponse response) {
         try {
             TokenResponseDto tokenDto = service.login(loginRequest);
             if (tokenDto == null) {
@@ -42,7 +42,7 @@ public class AuthController {
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
             return ResponseEntity.ok(tokenDto);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -52,7 +52,7 @@ public class AuthController {
             summary = "access",
             description = "Getting new access token"
     )
-    public ResponseEntity<Object> getNewAccessToken(@RequestBody RefreshRequestDto request, HttpServletResponse response){
+    public ResponseEntity<Object> getNewAccessToken(@RequestBody RefreshRequestDto request, HttpServletResponse response) {
         try {
             TokenResponseDto tokenDto = service.getAccessToken(request.getRefreshToken());
             Cookie cookie = new Cookie("Access-Token", tokenDto.getAccessToken()); // "access..." make a constant
@@ -61,7 +61,7 @@ public class AuthController {
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
             return ResponseEntity.ok(tokenDto);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -71,7 +71,7 @@ public class AuthController {
             summary = "logout",
             description = "Authenticated user logout"
     )
-    public void logout (HttpServletResponse response){
+    public void logout(HttpServletResponse response) {
         Cookie cookie = new Cookie("Access-Token", null);
         cookie.setPath("/");
         //http-only cookie
@@ -79,5 +79,4 @@ public class AuthController {
         cookie.setMaxAge(0);
         response.addCookie(cookie);
     }
-
 }

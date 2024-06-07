@@ -18,7 +18,7 @@ public class RoleServiceImpl implements RoleService {
     public Role getRoleUser() {
         Role role = repository.findByTitle("ROLE_USER");
 
-        if(role == null){
+        if (role == null) {
             throw new RuntimeException("Database doesn't contain ROLE_USER");
         }
 

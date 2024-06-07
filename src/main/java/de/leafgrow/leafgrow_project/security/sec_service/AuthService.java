@@ -26,7 +26,7 @@ public class AuthService {
                        Map<String, String> refreshStorage, BCryptPasswordEncoder encoder) {
         this.userService = userService;
         this.tokenService = tokenService;
-        this.refreshStorage =new HashMap<>();
+        this.refreshStorage = new HashMap<>();
         this.encoder = encoder;
     }
 
@@ -34,22 +34,22 @@ public class AuthService {
         String email = loginRequest.getEmail();
         User foundUser = userService.loadUserByEmail(email);
 
-        if(encoder.matches(loginRequest.getPassword(), foundUser.getPassword())){
+        if (encoder.matches(loginRequest.getPassword(), foundUser.getPassword())) {
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
             refreshStorage.put(email, refreshToken);
             return new TokenResponseDto(accessToken, refreshToken);
-        } else{
+        } else {
             throw new AuthException("Password is incorrect");
         }
     }
 
-    public TokenResponseDto getAccessToken(@NonNull String inboundRefreshToken){
+    public TokenResponseDto getAccessToken(@NonNull String inboundRefreshToken) {
         Claims refreshClaims = tokenService.getRefreshClaims(inboundRefreshToken);
         String email = refreshClaims.getSubject();
         String savedRefreshToken = refreshStorage.get(email);
 
-        if(inboundRefreshToken.equals(savedRefreshToken)){
+        if (inboundRefreshToken.equals(savedRefreshToken)) {
             User user = userService.loadUserByEmail(email);
             String accessToken = tokenService.generateAccessToken(user);
             return new TokenResponseDto(accessToken, null);
@@ -57,7 +57,7 @@ public class AuthService {
         return new TokenResponseDto(null, null);
     }
 
-    public AuthInfo getAuthInfo(){
+    public AuthInfo getAuthInfo() {
         return (AuthInfo) SecurityContextHolder.getContext().getAuthentication();
     }
 

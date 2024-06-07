@@ -36,7 +36,6 @@ public class ConfirmationServiceImpl implements ConfirmationService {
         potService.createPotsForUser(user);
         userRepository.save(user);
 
-
         return user;
     }
 
@@ -48,5 +47,4 @@ public class ConfirmationServiceImpl implements ConfirmationService {
         repository.save(entity);
         return code;
     }
-
 }

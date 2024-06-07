@@ -44,7 +44,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setTo(user.getEmail());
             helper.setSubject("Registration");
             helper.setText(text, true); // text has html format
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
@@ -67,14 +67,14 @@ public class EmailServiceImpl implements EmailService {
             helper.setTo(user.getEmail());
             helper.setSubject("Advice!");
             helper.setText(text, true); // text has html format
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         sender.send(message);
     }
 
-    private String generateMessageText(User user){
+    private String generateMessageText(User user) {
         try {
             Template template = mailConfiguration
                     .getTemplate("confirm_registration_mail.ftlh"); //freemarker template package
@@ -86,12 +86,12 @@ public class EmailServiceImpl implements EmailService {
             //model.put("link", "http://localhost:5173/betweenpage/register/confirm?code=" + code); //for Iren
 
             return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String generateImportantMessageText(User user){
+    private String generateImportantMessageText(User user) {
         try {
             Template template = mailConfiguration
                     .getTemplate("important_message_mail.ftlh"); //freemarker template package
@@ -101,9 +101,8 @@ public class EmailServiceImpl implements EmailService {
             model.put("name", user.getUsername());
 
             return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-
 }

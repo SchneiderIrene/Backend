@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add_admin" author="vasilii">
+
+        <insert tableName="user">
+            <column name="username" value="LeafGrow"/>
+            <column name="password" value="$2a$10$KzNzCdNtVp2/zBIZiEX9R.n48fVg3Kn.W..h6fVBsSAopqQEikzp6"/>
+            <column name="email" value="leafgrow.project@gmail.com"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

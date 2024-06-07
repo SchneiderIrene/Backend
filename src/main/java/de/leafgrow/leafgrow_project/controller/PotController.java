@@ -5,8 +5,10 @@ import de.leafgrow.leafgrow_project.domain.entity.Pot;
 import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.repository.PotRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.PotService;
+import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +20,12 @@ import java.util.stream.Collectors;
 public class PotController {
     private PotService service;
     private PotRepository repository;
+    private UserService userService;
 
-    public PotController(PotService service, PotRepository repository) {
+    public PotController(PotService service, PotRepository repository, UserService userService) {
         this.service = service;
         this.repository = repository;
+        this.userService = userService;
     }
 
     @GetMapping("/{potId}/instruction")
@@ -48,7 +52,11 @@ public class PotController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createPotsForUser(@RequestBody User user) {
+    public ResponseEntity<Void> createPotsForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        User user = userService.loadUserByEmail(email);
         service.createPotsForUser(user);
         return ResponseEntity.ok().build();
     }
@@ -59,21 +67,8 @@ public class PotController {
         return ResponseEntity.ok().build();
     }
 
-    // Зря делал. Василий реализовал в методе refresh
-    @PostMapping("/{potId}/reset")
-    public ResponseEntity<Void> resetPot(@PathVariable Long potId) {
-        Optional<Pot> potOptional = repository.findById(potId);
-        if (potOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        Pot pot = potOptional.get();
-        service.resetPot(pot);
-        return ResponseEntity.ok().build();
-    }
-
-    // works
     @PostMapping("/{potId}/skip-day")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> skipDay(@PathVariable Long potId) {
         Optional<Pot> potOptional = repository.findById(potId);
         if (potOptional.isEmpty()) {
@@ -84,7 +79,6 @@ public class PotController {
         return ResponseEntity.ok().build();
     }
 
-    //works show from each Pot
     @GetMapping("/user/{userId}/pots")
     public ResponseEntity<List<Instruction>> getPotsForUser(@PathVariable Long userId) {
         List<Pot> pots = service.findPotsByUserId(userId);
