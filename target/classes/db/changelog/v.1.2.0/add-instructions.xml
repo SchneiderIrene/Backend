@@ -61,7 +61,7 @@ Durch diese einfachen Schritte stellst du sicher, dass deine Samen erfolgreich k
 "/>
             <column name="is_important" value="true"/>
             <column name="day" value="2"/>
-            <column name="image" value="static/images/tag2.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag2.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -103,7 +103,7 @@ Temperatur und Luftfeuchtigkeit
 Halte die Temperatur im Bereich von 22-28°C. Die optimale Luftfeuchtigkeit für das Wachstum liegt bei 60-70%.
 Durch die Beachtung dieser einfachen Richtlinien förderst du ein gesundes Wachstum und bereitest deine Pflanzen auf eine erfolgreiche Blüte vor."/>
             <column name="day" value="4"/>
-            <column name="image" value="/images/Tag 4.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag4.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -118,7 +118,7 @@ Luftfeuchtigkeit
 Halte die Luftfeuchtigkeit auf einem Niveau von 60-70% uns lüfte täglich, um Luftstagnation und Schimmelbildung zu vermeiden.
 Durch die Einhaltung dieser Pflegemaßnahmen stellst du sicher, dass deine Cannabis-Pflanzen gesund wachsen und gedeihen."/>
             <column name="day" value="5"/>
-            <column name="image" value="src/main/resources/images/Tag 5.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag5.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -132,7 +132,7 @@ Stelle sicher, dass die Lichtverhältnisse mit Wachstumslampen gewährleistet si
 Durch die Einhaltung dieser Maßnahmen stellst du sicher, dass deine Cannabis-Pflanzen optimal wachsen und gedeihen."/>
             <column name="is_important" value="true"/>
             <column name="day" value="6"/>
-            <column name="image" value="src/main/resources/images/Tag 6.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag6.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -145,7 +145,7 @@ Belüftung
 Sorge für eine gute Belüftung, um Überhitzung zu vermeiden und einen ausreichenden Luftaustausch zu gewährleisten.
 Durch die Beachtung dieser Empfehlungen stellst du sicher, dass deine Cannabissamen gesund wachsen und sich optimal entwickeln."/>
             <column name="day" value="7"/>
-            <column name="image" value="src/main/resources/images/Tag 7.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag7.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -159,7 +159,7 @@ Sorgfältige Behandlung:
 Schonender Umgang: Behandle die Sämlinge vorsichtig, da sie noch klein und empfindlich sind. Vermeide übermäßiges Anfassen und Umlagern, da sie sehr zart sind und zu viel Einwirkung sie beschädigen kann.
 Denke daran, dass es in den ersten Tagen nach dem Erscheinen der Sämlinge wichtig ist, ihnen liebevolle und fürsorgliche Pflege zu gewährleisten, damit sie ihr gesundes Wachstum fortsetzen können."/>
             <column name="day" value="8"/>
-            <column name="image" value="src/main/resources/images/Tag 8.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag8.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -173,7 +173,7 @@ Halte die Temperatur weiterhin im Bereich von 22-28°C. Senke die Temperatur nac
 Durch die Einhaltung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge optimal wachsen und gedeihen."/>
             <column name="is_important" value="true"/>
             <column name="day" value="9"/>
-            <column name="image" value="src/main/resources/images/Tag 9.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag9.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -187,7 +187,7 @@ Lichtbedarf: Überprüfe, ob die Sämlinge ausreichend Licht erhalten.
 Temperatur: Beachte die empfohlene Temperatur von 22-28°C.
 Durch die Einhaltung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge optimal wachsen und gedeihen."/>
             <column name="day" value="10"/>
-            <column name="image" value="src/main/resources/images/Tag 10.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag10.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -199,7 +199,7 @@ Unkraut entfernen
 Vorsichtiges Entfernen: Wenn Unkraut im Boden erscheint, entferne es vorsichtig, damit es den Sämlingen nicht die Nährstoffe entzieht und keinen Platz zum Wachsen einnimmt.
 Durch die Beachtung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge gesund wachsen und gedeihen."/>
             <column name="day" value="11"/>
-            <column name="image" value="src/main/resources/images/Tag 11.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag11.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -215,7 +215,7 @@ Wenn noch irgendwo Unkraut übrig ist, entferne es, damit es deinen Pflanzen nic
 Durch die Beachtung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge gesund wachsen und gedeihen."/>
             <column name="is_important" value="true"/>
             <column name="day" value="12"/>
-            <column name="image" value="src/main/resources/images/Tag 12.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag12.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -225,7 +225,7 @@ Unterstützung der Sämlinge
 Sanfte Stützen: Wenn die Sämlinge groß genug werden, stütze sie ab. Verwende sanfte Stützen oder Spaliere, um ein Verbiegen oder Verdrehen der Stängel zu verhindern.
 Durch die Beachtung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge gesund wachsen und gedeihen."/>
             <column name="day" value="13"/>
-            <column name="image" value="src/main/resources/images/Tag 13.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag13.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -237,7 +237,7 @@ Lichtverteilung
 Lichtanpassung: Wenn die Sämlinge sich zum Licht neigen, ist das ein Zeichen dafür, dass sie mehr oder besser verteiltes Licht benötigen. Stelle die Beleuchtung ein oder drehe die Pflanzen, damit sie gleichmäßig wachsen und von allen Seiten Licht erhalten.
 Durch die Beachtung dieser Pflegehinweise stellst du sicher, dass deine Sämlinge gesund wachsen und gedeihen."/>
             <column name="day" value="14"/>
-            <column name="image" value="src/main/resources/images/Tag 14.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag14.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -268,7 +268,7 @@ Gieße die Sämlinge leicht an.
 Herzlichen Glückwunsch zur erfolgreichen Umpflanzung!"/>
             <column name="is_important" value="true"/>
             <column name="day" value="17"/>
-            <column name="image" value="src/main/resources/images/Tag 17.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag17.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -296,7 +296,7 @@ Salzvermeidung: Zwischen den Düngungen bewässere die Pflanzen mit klarem Wasse
 Jetzt bist du bereit, deine Pflanzen zu düngen!"/>
             <column name="is_important" value="true"/>
             <column name="day" value="34"/>
-            <column name="image" value="src/main/resources/images/Tag 34.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag34.jpg"/>
         </insert>
 
         <insert tableName="instruction">
@@ -319,7 +319,7 @@ Gute Luftzirkulation: Stelle sicher, dass eine gute Belüftung vorhanden ist, um
 Wenn alles richtig gemacht wurde, wirst du innerhalb einer Woche nach der Umstellung auf den 12/12-Lichtzyklus die ersten Blütenknospen sehen!"/>
             <column name="is_important" value="true"/>
             <column name="day" value="50"/>
-            <column name="image" value="src/main/resources/images/Tag 50.jpg"/>
+            <column name="image" value="src/main/resources/static/images/tag50.jpg"/>
         </insert>
 
     </changeSet>
