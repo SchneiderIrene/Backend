@@ -222,3 +222,7 @@ $RECYCLE.BIN/
 /target/
 target/
 /.idea/
+/logs/
+docker-compose.yml
+application-dev.yml
+src/main/resources/application-dev.yml
