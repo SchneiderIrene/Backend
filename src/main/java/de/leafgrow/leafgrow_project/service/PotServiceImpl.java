@@ -12,12 +12,14 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class PotServiceImpl implements PotService {
+    private static final int MAX_DAYS = 18;
     private PotRepository potRepository;
     private InstructionRepository instructionRepository;
     private InstructionService instructionService;
@@ -61,8 +63,8 @@ public class PotServiceImpl implements PotService {
         pot.setInstruction(instructionRepository.findByDay(1));
         potRepository.save(pot);
 
-        scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
-        //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.SECONDS);
+        //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
+        scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.SECONDS);
     }
 
     private void updateInstruction(Pot pot) {
@@ -84,5 +86,17 @@ public class PotServiceImpl implements PotService {
                 potRepository.save(pot);
             }
         }
+    }
+
+    public void skipDay(Pot pot) {
+        int currentDay = pot.getInstruction().getDay();
+        int nextDay = (currentDay % MAX_DAYS) + 1; // Предполагая, что MAX_DAYS — это длина цикла.
+        Instruction nextInstruction = instructionRepository.findByDay(nextDay);
+        pot.setInstruction(nextInstruction);
+        potRepository.save(pot);
+    }
+
+    public List<Pot> findPotsByUserId(Long userId) {
+        return potRepository.findByUserId(userId);
     }
 }

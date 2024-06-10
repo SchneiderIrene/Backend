@@ -34,7 +34,7 @@ public class RegistrationController {
             summary = "register",
             description = "Registration required user"
     )
-    public ResponseEntity<Response> register(@RequestBody User user){
+    public ResponseEntity<Response> register(@RequestBody User user) {
         try {
             userService.register(user);
             return ResponseEntity
@@ -51,7 +51,7 @@ public class RegistrationController {
             summary = "resent",
             description = "Resenting confirmation to email"
     )
-    public Response resendConfirmation(){
+    public Response resendConfirmation() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
@@ -76,6 +76,4 @@ public class RegistrationController {
                     .body(new Response("Ошибка при подтверждении аккаунта: " + e.getMessage()));
         }
     }
-
-
 }

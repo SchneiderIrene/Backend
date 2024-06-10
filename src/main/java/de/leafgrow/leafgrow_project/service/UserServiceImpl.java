@@ -47,8 +47,6 @@ public class UserServiceImpl implements UserService {
         emailService.sendConfirmationEmail(user);
     }
 
-
-
     @Override
     public User loadUserByEmail(String email) {
         User user = repository.findByEmail(email);
@@ -77,11 +75,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
     }
-
-
 }

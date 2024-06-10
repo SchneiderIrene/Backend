@@ -32,7 +32,8 @@ public class TokenService {
         this.refreshKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(refreshKey));
         this.repository = repository;
     }
-    public String generateAccessToken(User user){
+
+    public String generateAccessToken(User user) {
         LocalDateTime currentDate = LocalDateTime.now();
         Instant expirationInstant = currentDate.plusDays(7).atZone(ZoneId.systemDefault()).toInstant();
         Date expirationDate = Date.from(expirationInstant);
@@ -46,7 +47,7 @@ public class TokenService {
                 .compact();
     }
 
-    public String generateRefreshToken(User user){
+    public String generateRefreshToken(User user) {
         LocalDateTime currentDate = LocalDateTime.now();
         Instant expirationInstant = currentDate.plusDays(30).atZone(ZoneId.systemDefault()).toInstant();
         Date expirationDate = Date.from(expirationInstant);
@@ -58,35 +59,35 @@ public class TokenService {
                 .compact();
     }
 
-    public boolean validateAccessToken(String accessToken){
+    public boolean validateAccessToken(String accessToken) {
         return validateToken(accessToken, accessKey);
     }
 
-    public boolean validateRefreshToken(String refreshToken){
+    public boolean validateRefreshToken(String refreshToken) {
         return validateToken(refreshToken, refreshKey);
     }
 
-    private boolean validateToken(String token, SecretKey key){
-        try{
+    private boolean validateToken(String token, SecretKey key) {
+        try {
             Jwts.parser()
                     .verifyWith(key)
                     .build()
                     .parseSignedClaims(token);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public Claims getAccessClaims(String accessToken){
+    public Claims getAccessClaims(String accessToken) {
         return getClaims(accessToken, accessKey);
     }
 
-    public Claims getRefreshClaims(String refreshToken){
+    public Claims getRefreshClaims(String refreshToken) {
         return getClaims(refreshToken, refreshKey);
     }
 
-    private Claims getClaims(String token, SecretKey key){
+    private Claims getClaims(String token, SecretKey key) {
         return Jwts.parser()
                 .verifyWith(key)
                 .build()
@@ -94,11 +95,11 @@ public class TokenService {
                 .getPayload();
     }
 
-    public AuthInfo generateAuthInfo(Claims claims){
+    public AuthInfo generateAuthInfo(Claims claims) {
         String email = claims.getSubject();
         List<LinkedHashMap<String, String>> roleList = (List<LinkedHashMap<String, String>>) claims.get("roles");
         Set<Role> roles = new HashSet<>();
-        for(LinkedHashMap<String, String> roleEntry : roleList){
+        for (LinkedHashMap<String, String> roleEntry : roleList) {
             String roleTitle = roleEntry.get("authority");
             Role role = repository.findByTitle(roleTitle);
             roles.add(role);
