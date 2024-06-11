@@ -1,5 +1,6 @@
 package de.leafgrow.leafgrow_project.controller;
 
+import de.leafgrow.leafgrow_project.domain.dto.PotDto;
 import de.leafgrow.leafgrow_project.domain.entity.Instruction;
 import de.leafgrow.leafgrow_project.domain.entity.Pot;
 import de.leafgrow.leafgrow_project.domain.entity.User;
@@ -112,8 +113,8 @@ class PotControllerTest {
 
         when(potService.findPotsByUserId(userId)).thenReturn(pots);
 
-        ResponseEntity<List<Instruction>> response =
-                potController.getPotsForUser(userId);
+        ResponseEntity<List<PotDto>> response =
+                potController.getPotsForUser();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
