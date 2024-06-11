@@ -29,9 +29,9 @@ public class PotController {
         this.userService = userService;
     }
 
-    @GetMapping("/{potId}/instruction")
-    public ResponseEntity<Instruction> getInstructionForPot(@PathVariable Long potId) {
-        Optional<Pot> potOptional = repository.findById(potId);
+    @GetMapping("/{id}/instruction")
+    public ResponseEntity<Instruction> getInstructionForPot(@PathVariable Long id) {
+        Optional<Pot> potOptional = repository.findById(id);
         if (potOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -40,9 +40,9 @@ public class PotController {
         return ResponseEntity.ok(pot.getInstruction());
     }
 
-    @PostMapping("/{potId}/refresh")
-    public ResponseEntity<Void> refreshPot(@PathVariable Long potId) {
-        Optional<Pot> potOptional = repository.findById(potId);
+    @PostMapping("/{id}/refresh")
+    public ResponseEntity<Void> refreshPot(@PathVariable Long id) {
+        Optional<Pot> potOptional = repository.findById(id);
         if (potOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -62,16 +62,16 @@ public class PotController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{potId}/activate")
-    public ResponseEntity<Void> activatePot(@PathVariable Long potId) {
-        service.activatePot(potId);
-        return ResponseEntity.ok().build();
+    @PostMapping("/{id}/activate")
+    public ResponseEntity<Pot> activatePot(@PathVariable Long id) {
+        Pot pot = service.activatePot(id);
+        return ResponseEntity.ok(pot);
     }
 
-    @PostMapping("/{potId}/skip-day")
+    @PostMapping("/{id}/skip-day")
     //@PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> skipDay(@PathVariable Long potId) {
-        Optional<Pot> potOptional = repository.findById(potId);
+    public ResponseEntity<Void> skipDay(@PathVariable Long id) {
+        Optional<Pot> potOptional = repository.findById(id);
         if (potOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -95,8 +95,5 @@ public class PotController {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-
-
-
     }
 }

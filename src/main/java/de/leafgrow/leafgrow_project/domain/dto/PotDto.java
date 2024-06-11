@@ -3,24 +3,18 @@ package de.leafgrow.leafgrow_project.domain.dto;
 import de.leafgrow.leafgrow_project.domain.entity.Instruction;
 
 public class PotDto {
-    private Long potId;
+    private Long id;
     private boolean isActive;
     private Instruction instruction;
 
-    // Конструктор
-    public PotDto(Long potId, boolean isActive, Instruction instruction) {
-        this.potId = potId;
+    public PotDto(Long id, boolean isActive, Instruction instruction) {
+        this.id = id;
         this.isActive = isActive;
         this.instruction = instruction;
     }
 
-    // Геттеры и сеттеры
-    public Long getPotId() {
-        return potId;
-    }
-
-    public void setPotId(Long potId) {
-        this.potId = potId;
+    public Long getId() {
+        return id;
     }
 
     public boolean isActive() {
@@ -37,6 +31,15 @@ public class PotDto {
 
     public void setInstruction(Instruction instruction) {
         this.instruction = instruction;
+    }
+
+    @Override
+    public String toString() {
+        return "PotDto{" +
+                "id=" + id +
+                ", isActive=" + isActive +
+                ", instruction=" + instruction +
+                '}';
     }
 }
 

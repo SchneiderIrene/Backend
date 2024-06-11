@@ -11,7 +11,7 @@ public interface PotService {
 
     void createPotsForUser(User user);
 
-    void activatePot(Long potId);
+    Pot activatePot(Long potId);
 
     void skipDay(Pot pot);
 

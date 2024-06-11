@@ -100,7 +100,7 @@ class PotControllerTest {
     void activatePot() {
         Long potId = 1L;
 
-        ResponseEntity<Void> response = potController.activatePot(potId);
+        ResponseEntity<Pot> response = potController.activatePot(potId);
 
         verify(potService, times(1)).activatePot(potId);
         assertEquals(HttpStatus.OK, response.getStatusCode());

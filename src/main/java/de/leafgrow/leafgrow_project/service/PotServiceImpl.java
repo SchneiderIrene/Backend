@@ -57,7 +57,7 @@ public class PotServiceImpl implements PotService {
 
     @Override
     @Transactional
-    public void activatePot(Long potId) {
+    public Pot activatePot(Long potId) {
         Pot pot = potRepository.findById(potId).orElseThrow(() -> new RuntimeException("Pot not found"));
         pot.setActive(true);
         pot.setInstruction(instructionRepository.findByDay(1));
@@ -65,6 +65,8 @@ public class PotServiceImpl implements PotService {
 
         //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
         scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.SECONDS);
+
+        return potRepository.save(pot);
     }
 
     private void updateInstruction(Pot pot) {
