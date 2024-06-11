@@ -52,6 +52,11 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
+    public void sendImportantDayEmail(String email) {
+        // TODO
+    }
+
+    @Override
     public void sendImportantEmail(User user) {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");

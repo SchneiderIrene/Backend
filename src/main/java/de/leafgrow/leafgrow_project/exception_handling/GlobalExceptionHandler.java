@@ -14,3 +14,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 new Response("Internal server error: " + ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+

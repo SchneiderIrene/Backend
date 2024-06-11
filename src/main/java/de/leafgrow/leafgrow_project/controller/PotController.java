@@ -80,6 +80,7 @@ public class PotController {
         return ResponseEntity.ok().build();
     }
 
+
     @GetMapping("/my")
     public ResponseEntity<List<PotDto>> getPotsForUser() {
         try {
@@ -95,5 +96,6 @@ public class PotController {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
+
     }
 }
