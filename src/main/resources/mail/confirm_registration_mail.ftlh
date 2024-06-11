@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Email Confirmation</title>
+    <title>LeafGrow.de: Aktivieren Sie nun Ihr Kundenkonto</title>
 </head>
 <body>
-<h1 style="color: green">Подтверждение регистрации</h1>
-<h2>Добрый день, ${name}!</h2>
-<p>Для подтверждения регистрации пройдите по <a href="${link}">ссылке</a></p>
+<h1 style="color: green">Bestätigung der Anmeldung</h1>
+<h2>Hallo, ${name}!</h2>
+<p>Um dein Kundenkonto jetzt zu aktivieren, klick bitte auf folgenden <a href="${link}"> Link</a>.</p>
+<br>
+<p>Mit freundlichen Grüßen</p>
+<p>Dein LeafGrow Support-Team</p>
 </body>
 </html>
