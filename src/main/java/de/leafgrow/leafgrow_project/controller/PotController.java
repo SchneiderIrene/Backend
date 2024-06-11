@@ -1,5 +1,6 @@
 package de.leafgrow.leafgrow_project.controller;
 
+import de.leafgrow.leafgrow_project.domain.dto.PotDto;
 import de.leafgrow.leafgrow_project.domain.entity.Instruction;
 import de.leafgrow.leafgrow_project.domain.entity.Pot;
 import de.leafgrow.leafgrow_project.domain.entity.User;
@@ -79,12 +80,23 @@ public class PotController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/user/{userId}/pots")
-    public ResponseEntity<List<Instruction>> getPotsForUser(@PathVariable Long userId) {
-        List<Pot> pots = service.findPotsByUserId(userId);
-        List<Instruction> instructions = pots.stream()
-                .map(Pot::getInstruction)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(instructions);
+    @GetMapping("/my")
+    public ResponseEntity<List<PotDto>> getPotsForUser() {
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userContent = authentication.getName();
+            User user = userService.loadUserByEmail(userContent);
+
+            List<Pot> pots = service.findPotsByUserId(user.getId());
+            List<PotDto> potsDto = pots.stream()
+                    .map(pot -> new PotDto(pot.getId(), pot.isActive(), pot.getInstruction()))
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(potsDto);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+
+
     }
 }
