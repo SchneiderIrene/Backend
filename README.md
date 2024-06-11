@@ -6,7 +6,7 @@
     * `DB_NAME`
     * `DB_USERNAME`
     * `DB_PASSWORD`
-
+ 
 ```text
 DB_HOST=${leafgrow_project.HOSTNAME}
 DB_PORT=${leafgrow_project.PORT}
