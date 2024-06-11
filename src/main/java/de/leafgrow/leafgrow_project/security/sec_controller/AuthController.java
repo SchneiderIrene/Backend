@@ -31,6 +31,15 @@ public class AuthController {
     )
     public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequest, HttpServletResponse response) {
         try {
+            User user = userService.loadUserByEmail(loginRequest.getEmail());
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not found");
+            }
+
+            if (!user.isActive()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email not confirmed");
+            }
+
             TokenResponseDto tokenDto = service.login(loginRequest);
             if (tokenDto == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to generate token");
@@ -43,7 +52,9 @@ public class AuthController {
             response.addCookie(cookie);
             return ResponseEntity.ok(tokenDto);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.I_AM_A_TEAPOT);
+
         }
     }
 

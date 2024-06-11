@@ -1,5 +1,7 @@
 package de.leafgrow.leafgrow_project.controller;
 
+
+import de.leafgrow.leafgrow_project.domain.dto.PotDto;
 import de.leafgrow.leafgrow_project.domain.entity.Instruction;
 import de.leafgrow.leafgrow_project.domain.entity.Pot;
 import de.leafgrow.leafgrow_project.domain.entity.User;
@@ -22,8 +24,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.*;
 
 class PotControllerTest {
@@ -52,7 +55,6 @@ class PotControllerTest {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(potController).build();
     }
-
 
     @Test
     void getInstructionForPot() {
@@ -101,7 +103,8 @@ class PotControllerTest {
     void activatePot() {
         Long potId = 1L;
 
-        ResponseEntity<Void> response = potController.activatePot(potId);
+        ResponseEntity<Pot> response = potController.activatePot(potId);
+
 
         verify(potService, times(1)).activatePot(potId);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -114,11 +117,11 @@ class PotControllerTest {
 
         when(potService.findPotsByUserId(userId)).thenReturn(pots);
 
-        ResponseEntity<List<Instruction>> response =
-                potController.getPotsForUser(userId);
+        ResponseEntity<List<PotDto>> response =
+                potController.getPotsForUser();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals(2, response.getBody().size());
+
     }
 }

@@ -26,7 +26,6 @@ spring:
           ssl:
             protocols: TLSv1.2
             trust: smtp.gmail.com
-
 key:
   access: vCzzRbdnRQnZaz0yMft6CM6XOFxH5RFXlEp2SfJaENg=
   refresh: w4nW81yrLjMg5OEIoiZEiGSHCOgZJwqadOF2Y3LhSUQ=
