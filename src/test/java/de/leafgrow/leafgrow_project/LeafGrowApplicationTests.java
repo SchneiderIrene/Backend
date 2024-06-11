@@ -9,5 +9,4 @@ class LeafGrowApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
