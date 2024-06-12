@@ -33,7 +33,7 @@ public class ConfirmationServiceImpl implements ConfirmationService {
 
         User user = confirmationCode.getUser();
         user.setActive(true);
-        potService.createPotsForUser(user);
+        //potService.createPotsForUser(user);
         userRepository.save(user);
 
         return user;
@@ -42,6 +42,7 @@ public class ConfirmationServiceImpl implements ConfirmationService {
     @Override
     public String generateConfirmationCode(User user) {
         LocalDateTime expired = LocalDateTime.now().plusMinutes(10);
+        //LocalDateTime expired = LocalDateTime.now().plusMinutes(1);
         String code = UUID.randomUUID().toString();
         ConfirmationCode entity = new ConfirmationCode(code, user, expired);
         repository.save(entity);

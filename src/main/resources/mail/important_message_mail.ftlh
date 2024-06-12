@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Important advice</title>
+    <title>LeafGrow.de: Hey, verschlaf nicht etwas Wichtiges!</title>
 </head>
 <body>
-<h1 style="color: green">Важное уведомление</h1>
-<h2>Добрый день, ${name}!</h2>
-<p>Скорее переходи в приложения, тебя ждут чрезвычайно важные инструкции и рекомендации!!!</p>
+<h1 style="color: green">Wichtige Benachrichtigung</h1>
+<h2>Hallo, ${name}!</h2>
+<p>Schnell zur App wechseln, es gibt extrem wichtige Anweisungen und Empfehlungen, die auf dich warten!</p>
+<br>
+<p>Mit freundlichen Grüßen</p>
+<p>Dein LeafGrow Support-Team</p>
 </body>
 </html>

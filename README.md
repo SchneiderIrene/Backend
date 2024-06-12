@@ -8,9 +8,9 @@
     * `DB_PASSWORD`
  
 ```text
-DB_HOST=${leafgrowproject.HOSTNAME}
-DB_PORT=${leafgrowproject.PORT}
-DB_NAME=${leafgrowproject.NAME}
-DB_USERNAME=${leafgrowproject.USERNAME}
-DB_PASSWORD=${leafgrowproject.PASSWORD}
+DB_HOST=${leafgrowprojectDB.HOSTNAME}
+DB_PORT=${leafgrowprojectDB.PORT}
+DB_NAME=${leafgrowprojectDB.NAME}
+DB_USERNAME=${leafgrowprojectDB.USERNAME}
+DB_PASSWORD=${leafgrowprojectDB.PASSWORD}
 ```
