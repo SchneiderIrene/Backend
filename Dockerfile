@@ -1,20 +1,14 @@
-FROM maven:3.8.3-openjdk-17 as build
-
-WORKDIR /workspace/app
-
-COPY pom.xml .
-COPY src src
-
+FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 RUN mvn clean package -DskipTests
 
-RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+FROM openjdk:17.0.1-jdk-slim
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/usr/local/openjdk-17
+EXPOSE 8080
 
-FROM eclipse-temurin:17-jre-alpine
+RUN mkdir /app
+COPY --from=build /usr/src/app/target/*.jar /app/app.jar
 
-ARG DEPENDENCY=/workspace/app/target/dependency
-
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
-
-ENTRYPOINT ["java", "-cp", "app:app/lib/*", "de.leafgrow.leafgrow_project.LeafGrowApplication"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
