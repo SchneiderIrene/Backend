@@ -10,6 +10,7 @@
             <column name="username" value="LeafGrow"/>
             <column name="password" value="$2a$10$KzNzCdNtVp2/zBIZiEX9R.n48fVg3Kn.W..h6fVBsSAopqQEikzp6"/>
             <column name="email" value="leafgrow.project@gmail.com"/>
+            <column name="is_active" value="true"/>
         </insert>
 
     </changeSet>
