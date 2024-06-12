@@ -57,9 +57,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/pots/{potId}/activate").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/create").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/{potId}/skip-day").hasRole("ADMIN")
-
                         .requestMatchers(HttpMethod.GET, "/api/my").authenticated()
-
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
