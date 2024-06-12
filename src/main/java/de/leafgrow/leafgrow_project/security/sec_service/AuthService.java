@@ -34,6 +34,7 @@ public class AuthService {
         String email = loginRequest.getEmail();
         User foundUser = userService.loadUserByEmail(email);
 
+
         if (!foundUser.isActive()) {
             throw new IllegalStateException("Email not confirmed");
         }

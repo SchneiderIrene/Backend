@@ -29,6 +29,12 @@ public class RegistrationController {
         this.emailService = emailService;
     }
 
+    private boolean isValidEmail(String email) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        return email.matches(regex);
+    }
+
     @PostMapping
     @Operation(
             summary = "register",
@@ -36,6 +42,12 @@ public class RegistrationController {
     )
     public ResponseEntity<Response> register(@RequestBody User user) {
         try {
+            if (!isValidEmail(user.getEmail())) {
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(new Response("Некорректный email."));
+            }
+
             userService.register(user);
             return ResponseEntity
                     .ok(new Response("Регистрация успешно завершена. Проверьте ваш email для завершения процесса."));

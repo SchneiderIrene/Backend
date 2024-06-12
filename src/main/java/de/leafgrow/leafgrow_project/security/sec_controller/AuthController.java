@@ -52,7 +52,9 @@ public class AuthController {
             response.addCookie(cookie);
             return ResponseEntity.ok(tokenDto);
         } catch (Exception e) {
+
             return new ResponseEntity<>(e.getMessage(), HttpStatus.I_AM_A_TEAPOT);
+
         }
     }
 

@@ -1,5 +1,6 @@
 package de.leafgrow.leafgrow_project.controller;
 
+
 import de.leafgrow.leafgrow_project.domain.dto.PotDto;
 import de.leafgrow.leafgrow_project.domain.entity.Instruction;
 import de.leafgrow.leafgrow_project.domain.entity.Pot;
@@ -23,7 +24,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.List;
 import java.util.Optional;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.*;
 
 class PotControllerTest {
@@ -100,7 +103,8 @@ class PotControllerTest {
     void activatePot() {
         Long potId = 1L;
 
-        ResponseEntity<Void> response = potController.activatePot(potId);
+        ResponseEntity<Pot> response = potController.activatePot(potId);
+
 
         verify(potService, times(1)).activatePot(potId);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -118,5 +122,6 @@ class PotControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
+
     }
 }
