@@ -4,6 +4,7 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.exception_handling.Response;
 import de.leafgrow.leafgrow_project.service.interfaces.ConfirmationService;
 import de.leafgrow.leafgrow_project.service.interfaces.EmailService;
+import de.leafgrow.leafgrow_project.service.interfaces.PotService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,14 @@ public class RegistrationController {
     private UserService userService;
     private ConfirmationService confirmationService;
     private EmailService emailService;
+    private PotService potService;
 
 
-    public RegistrationController(UserService userService, ConfirmationService confirmationService, EmailService emailService) {
+    public RegistrationController(UserService userService, ConfirmationService confirmationService, EmailService emailService, PotService potService) {
         this.userService = userService;
         this.confirmationService = confirmationService;
         this.emailService = emailService;
+        this.potService = potService;
     }
 
     private boolean isValidEmail(String email) {
@@ -49,6 +52,7 @@ public class RegistrationController {
             }
 
             userService.register(user);
+            potService.createPotsForUser(user);
             return ResponseEntity
                     .ok(new Response("Регистрация успешно завершена. Проверьте ваш email для завершения процесса."));
         } catch (Exception e) {
