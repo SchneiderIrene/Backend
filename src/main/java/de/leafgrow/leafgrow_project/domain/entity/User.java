@@ -1,7 +1,6 @@
 package de.leafgrow.leafgrow_project.domain.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,8 +20,6 @@ public class User implements UserDetails {
 
     @Column(name = "username")
     private String username;
-
-    @Email(message = "Email should be valid")
     @Column(name = "email")
     private String email;
 
