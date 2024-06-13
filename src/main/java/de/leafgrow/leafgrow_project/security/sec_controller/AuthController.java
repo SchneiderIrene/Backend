@@ -11,6 +11,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -82,12 +84,23 @@ public class AuthController {
             summary = "logout",
             description = "Authenticated user logout"
     )
-    public void logout(HttpServletResponse response) {
+    public ResponseEntity<User> logout(HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        String email = authentication.getName();
+        User user = userService.loadUserByEmail(email);
+
         Cookie cookie = new Cookie("Access-Token", null);
         cookie.setPath("/");
         //http-only cookie
         cookie.setHttpOnly(true);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
