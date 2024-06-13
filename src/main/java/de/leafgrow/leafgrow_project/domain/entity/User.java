@@ -13,11 +13,6 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
-    //manual security password generation for manual adding to DB test users
-    //        public static void main(String[] args) {
-    //            System.out.println(new BCryptPasswordEncoder().encode("ahmvpR9SzZtLeafGrowYCAMN3NA"));
-    //        } // $2a$10$KzNzCdNtVp2/zBIZiEX9R.n48fVg3Kn.W..h6fVBsSAopqQEikzp6 <-password for admin
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

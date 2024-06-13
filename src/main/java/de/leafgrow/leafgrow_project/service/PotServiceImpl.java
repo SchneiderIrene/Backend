@@ -64,8 +64,8 @@ public class PotServiceImpl implements PotService {
         pot.setInstruction(instructionRepository.findByDay(1));
         potRepository.save(pot);
 
-        //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
-        scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24, TimeUnit.HOURS);
+        //scheduler.scheduleAtFixedRate(() -> updateInstruction(pot), 24, 24,TimeUnit.SECONDS);
 
         return potRepository.save(pot);
 

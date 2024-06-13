@@ -79,7 +79,6 @@ public class EmailServiceImpl implements EmailService {
             model.put("name", user.getUsername());
             //model.put("link", "http://localhost:8080/api/register/confirm?code=" + code); //name server
             model.put("link", "https://leafgrow-app-foign.ondigitalocean.app/#/betweenpage/register/confirm?code=" + code); //for Iren
-
             return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
         } catch (Exception e) {
             throw new RuntimeException(e);
