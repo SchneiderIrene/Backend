@@ -78,7 +78,7 @@ public class EmailServiceImpl implements EmailService {
             Map<String, Object> model = new HashMap<>();
             model.put("name", user.getUsername());
             //model.put("link", "http://localhost:8080/api/register/confirm?code=" + code); //name server
-            model.put("link", "https://leafgrow-app-foign.ondigitalocean.app/betweenpage/register/confirm?code=" + code);
+            model.put("link", "https://leafgrow-app-foign.ondigitalocean.app/#/betweenpage/register/confirm?code=" + code);
 
             return FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
         } catch (Exception e) {

@@ -20,7 +20,6 @@ import java.io.IOException;
 public class TokenFilter extends GenericFilterBean {
     private TokenService service;
 
-    @Autowired
     public TokenFilter(TokenService service) {
         this.service = service;
     }

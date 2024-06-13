@@ -25,7 +25,6 @@ public class TokenService {
     private SecretKey refreshKey;
     private RoleRepository repository;
 
-    @Autowired
     public TokenService(
             @Value("${key.access}") String accessKey,
             @Value("${key.refresh}") String refreshKey,
