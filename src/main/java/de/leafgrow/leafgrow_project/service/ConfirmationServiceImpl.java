@@ -41,7 +41,7 @@ public class ConfirmationServiceImpl implements ConfirmationService {
 
     @Override
     public String generateConfirmationCode(User user) {
-        LocalDateTime expired = LocalDateTime.now().plusMinutes(10);
+        LocalDateTime expired = LocalDateTime.now().plusMinutes(60);
         //LocalDateTime expired = LocalDateTime.now().plusMinutes(1);
         String code = UUID.randomUUID().toString();
         ConfirmationCode entity = new ConfirmationCode(code, user, expired);
