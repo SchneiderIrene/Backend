@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -100,6 +101,8 @@ public class PotServiceImpl implements PotService {
     }
 
     public List<Pot> findPotsByUserId(Long userId) {
-        return potRepository.findByUserId(userId);
+        List<Pot> pots = potRepository.findByUserId(userId);
+        pots.sort(Comparator.comparingLong(Pot::getId));
+        return pots;
     }
 }
