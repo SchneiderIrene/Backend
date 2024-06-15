@@ -16,4 +16,6 @@ public interface PotService {
     void skipDay(Pot pot);
 
     List<Pot> findPotsByUserId(Long userId);
+
+    Pot createPotForAdmin(User user);
 }

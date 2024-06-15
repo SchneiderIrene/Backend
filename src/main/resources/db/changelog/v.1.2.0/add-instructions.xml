@@ -7,88 +7,117 @@
     <changeSet id="add_instructions" author="vasilii">
 
         <insert tableName="instruction">
-            <column name="content" value="Benötigte Materialien
-3%-iges Wasserstoffperoxid
-Wasser (ohne Kohlensäure)
-Ein Becher (Plastik oder Glas)
-Vorbereitung
-Wasser:
-verwende normales Trinkwasser ohne Kohlensäure (vorzugsweise aus dem Laden)
-vermeide Mineralwasser und Leitungswasser, da sie Verunreinigungen enthalten können.
-Mischung:
-gieße 50 ml Wasser in den Becher
-füge 10 Tropfen 3%-iges Wasserstoffperoxid hinzu
-rühre die Mischung gründlich um.
-Sameneinlegung:
-lege die Samen in die vorbereitete Lösung
-stelle den Becher an einen dunklen, warmen Ort (z.B. in einen Schrank oder eine Schublade).
-Wartezeit:
-warte 48 Stunden
-sobald die Wurzeln eine Länge von 5-10 mm erreicht haben (etwas länger als die Samen selbst), können sie eingepflanzt werden.
-Wichtige Hinweise
-Halte die Raumtemperatur zwischen 22-28°C. Eine nächtliche Absenkung um 5-6 Grad ist vorteilhaft und fördert das Wachstum und die Blüte.
-Die Luftfeuchtigkeit sollte zwischen 60-70 % liegen.
-Diese Anleitung hilft dir dabei, deine Samen optimal auf die Keimung vorzubereiten und ein gesundes Wachstum sicherzustellen.
-"/>
+            <column name="content" value="# Tag 1
+
+## Benötigte Materialien
+- 3%-iges Wasserstoffperoxid
+- Wasser (ohne Kohlensäure)
+- Ein Becher (Plastik oder Glas)
+
+## Vorbereitung
+
+### Wasser:
+- Verwende normales Trinkwasser ohne Kohlensäure (vorzugsweise aus dem Laden).
+- Vermeide Mineralwasser und Leitungswasser, da sie Verunreinigungen enthalten können.
+
+### Mischung:
+1. Gieße 50 ml Wasser in den Becher.
+2. Füge 10 Tropfen 3%-iges Wasserstoffperoxid hinzu.
+3. Rühre die Mischung gründlich um.
+
+### Sameneinlegung:
+1. Lege die Samen in die vorbereitete Lösung.
+2. Stelle den Becher an einen dunklen, warmen Ort (z.B. in einen Schrank oder eine Schublade).
+
+### Wartezeit:
+1. Warte 48 Stunden.
+2. Sobald die Wurzeln eine Länge von 5-10 mm erreicht haben (etwas länger als die Samen selbst), können sie eingepflanzt werden.
+
+## Wichtige Hinweise
+- Halte die Raumtemperatur zwischen 22-28°C. Eine nächtliche Absenkung um 5-6 Grad ist vorteilhaft und fördert das Wachstum und die Blüte.
+- Die Luftfeuchtigkeit sollte zwischen 60-70 % liegen.
+
+Diese Anleitung hilft dir dabei, deine Samen optimal auf die Keimung vorzubereiten und ein gesundes Wachstum sicherzustellen."/>
             <column name="day" value="1"/>
             <column name="image" value="src/main/resources/static/images/tag1.jpg"/>
         </insert>
 
         <insert tableName="instruction">
-            <column name="content" value="Eine der einfachsten und beliebtesten Methoden zur Keimung von Samen ist die Verwendung eines Plastikbehälters. Hier ist, was du brauchst und wie du vorgehst.
+            <column name="content" value="# Tag 2
 
-Benötigte Materialien
-Normale Plastikbecher oder Formen mit einem Volumen von 0,5 l
-Erde (am besten geeignet ist Erde für Rosen oder Zitronen mit einem pH-Wert zwischen 6 und 7)
-Perlit
-Handschuhe
-Pinzette
-Sprühflasche mit normalem Trinkwasser
-Vorbereitung
-Vorbereitung vom Plastikbecher:
-fülle die Becher oder Formen zur Hälfte mit der vorbereiteten Erde.
-Samen einpflanzen:
-verwende die Pinzette, um die gekeimten Samen vorsichtig in die Erde zu setzen
-bedecke die Samen leicht mit einer dünnen Schicht Erde.
-Bewässerung:
-befeuchte die Erde vorsichtig mit der Sprühflasche, bis sie gleichmäßig feucht ist.
-Standort:
-Stelle die Becher an einen warmen, hellen Ort, aber nicht in direktes Sonnenlicht.
-Wichtige Hinweise
-Halte die Erde feucht, aber nicht nass.
-Kontrolliere die Temperatur und die Luftfeuchtigkeit regelmäßig, um optimale Wachstumsbedingungen zu gewährleisten.
-Durch diese einfachen Schritte stellst du sicher, dass deine Samen erfolgreich keimen und zu gesunden Pflanzen heranwachsen.
-"/>
+Eine der einfachsten und beliebtesten Methoden zur Keimung von Samen ist die Verwendung eines Plastikbehälters. Hier ist, was du brauchst und wie du vorgehst.
+
+## Benötigte Materialien
+- Normale Plastikbecher oder Formen mit einem Volumen von 0,5 l
+- Erde (am besten geeignet ist Erde für Rosen oder Zitronen mit einem pH-Wert zwischen 6 und 7)
+- Perlit
+- Handschuhe
+- Pinzette
+- Sprühflasche mit normalem Trinkwasser
+
+## Vorbereitung
+
+### Vorbereitung vom Plastikbecher:
+- Fülle die Becher oder Formen zur Hälfte mit der vorbereiteten Erde.
+
+### Samen einpflanzen:
+1. Verwende die Pinzette, um die gekeimten Samen vorsichtig in die Erde zu setzen.
+2. Bedecke die Samen leicht mit einer dünnen Schicht Erde.
+
+### Bewässerung:
+- Befeuchte die Erde vorsichtig mit der Sprühflasche, bis sie gleichmäßig feucht ist.
+
+### Standort:
+- Stelle die Becher an einen warmen, hellen Ort, aber nicht in direktes Sonnenlicht.
+
+## Wichtige Hinweise
+- Halte die Erde feucht, aber nicht nass.
+- Kontrolliere die Temperatur und die Luftfeuchtigkeit regelmäßig, um optimale Wachstumsbedingungen zu gewährleisten.
+
+Durch diese einfachen Schritte stellst du sicher, dass deine Samen erfolgreich keimen und zu gesunden Pflanzen heranwachsen."/>
             <column name="is_important" value="true"/>
             <column name="day" value="2"/>
             <column name="image" value="src/main/resources/static/images/tag2.jpg"/>
         </insert>
 
         <insert tableName="instruction">
-            <column name="content" value="Einige Samen sollten bereits gekeimt sein. Es ist Zeit, diese in die Erde einzupflanzen.
-Vorbereitung der Behälter
-Samen einpflanzen:
-Pflanze die Samen in Plastikbecher oder eine andere Form, um die notwendigen Feuchtigkeitswerte von Luft und Boden besser zu kontrollieren.
-Trick zum Umtopfen:
-Nimm zwei Plastikbehälter und schneide einen längs in Streifen, bevor du ihn in den zweiten Behälter stellst und mit Erde füllst. So kannst du die Setzlinge später leichter mit dem Wurzelballen herausnehmen.
+            <column name="content" value="# Tag 3
 
-Vorbereitung der Erde
-Erde mischen:
-Mische die Erde mit Perlit im Verhältnis 50/50 und fülle sie in den Becher oder die Form. Dies ist die optimale Basis für das Einpflanzen.
-Einpflanzen der gekeimten Samen
-Sorgfalt beim Einpflanzen:
-Trage Handschuhe und verwende eine Pinzette, um die Wurzeln nicht zu beschädigen.
-Schritte:
-Bereite die Becher/Formen mit der Erde wie oben beschrieben vor.
-Mache eine Vertiefung von etwa 0,5-1 cm in der Erde.
-Platziere die Samen vorsichtig mit der Pinzette in die Vertiefung, wobei die Wurzel nach unten zeigt.
-Bedecke die Samen mit Erde und befeuchte den Boden gründlich mit einem Sprühgerät.
-Optimale Feuchtigkeit:
-Nimm einen weiteren Behälter, mache einige Löcher in den Boden, besprühe ihn mit Wasser und decke die Becher/Formen damit ab. Dies hilft, den idealen Feuchtigkeitsgehalt zu halten.
-Standort:
-Stelle die Becher/Formen für 24-48 Stunden an einen warmen, dunklen Ort und dann unter eine Lichtquelle, bis die Keimlinge erscheinen.
-Bewässerung:
-Besprühe die Erde mit Wasser, das mindestens einen Tag lang abgestanden ist und Zimmertemperatur hat (etwa 24-25°C).
+Einige Samen sollten bereits gekeimt sein. Es ist Zeit, diese in die Erde einzupflanzen.
+
+## Vorbereitung der Behälter
+
+### Samen einpflanzen:
+- Pflanze die Samen in Plastikbecher oder eine andere Form, um die notwendigen Feuchtigkeitswerte von Luft und Boden besser zu kontrollieren.
+
+### Trick zum Umtopfen:
+- Nimm zwei Plastikbehälter und schneide einen längs in Streifen, bevor du ihn in den zweiten Behälter stellst und mit Erde füllst. So kannst du die Setzlinge später leichter mit dem Wurzelballen herausnehmen.
+
+## Vorbereitung der Erde
+
+### Erde mischen:
+- Mische die Erde mit Perlit im Verhältnis 50/50 und fülle sie in den Becher oder die Form. Dies ist die optimale Basis für das Einpflanzen.
+
+## Einpflanzen der gekeimten Samen
+
+### Sorgfalt beim Einpflanzen:
+- Trage Handschuhe und verwende eine Pinzette, um die Wurzeln nicht zu beschädigen.
+
+### Schritte:
+1. Bereite die Becher/Formen mit der Erde wie oben beschrieben vor.
+2. Mache eine Vertiefung von etwa 0,5-1 cm in der Erde.
+3. Platziere die Samen vorsichtig mit der Pinzette in die Vertiefung, wobei die Wurzel nach unten zeigt.
+4. Bedecke die Samen mit Erde und befeuchte den Boden gründlich mit einem Sprühgerät.
+
+### Optimale Feuchtigkeit:
+- Nimm einen weiteren Behälter, mache einige Löcher in den Boden, besprühe ihn mit Wasser und decke die Becher/Formen damit ab. Dies hilft, den idealen Feuchtigkeitsgehalt zu halten.
+
+### Standort:
+- Stelle die Becher/Formen für 24-48 Stunden an einen warmen, dunklen Ort und dann unter eine Lichtquelle, bis die Keimlinge erscheinen.
+
+### Bewässerung:
+- Besprühe die Erde mit Wasser, das mindestens einen Tag lang abgestanden ist und Zimmertemperatur hat (etwa 24-25°C).
+
 Durch diese sorgfältigen Schritte stellst du sicher, dass deine Samen optimal einwurzeln und zu gesunden Pflanzen heranwachsen."/>
             <column name="day" value="3"/>
             <column name="image" value="src/main/resources/static/images/tag3.jpg"/>
@@ -107,16 +136,21 @@ Durch die Beachtung dieser einfachen Richtlinien förderst du ein gesundes Wachs
         </insert>
 
         <insert tableName="instruction">
-            <column name="content" value="Heute bekommst du Empfehlungen zur Pflege von Cannabis nach dem Pflanzen.
-Überprüfung der Grundfeuchtigkeit
-Feuchtigkeitskontrolle: Der Boden sollte feucht, aber nicht nass sein. Die goldene Mitte ist das Ziel!
-Temperaturregelung
-Halte die Temperatur tagsüber im Bereich von 22-28°C und senke sie nachts um 5-6°C. Außerdem verwende bei Bedarf Heizungen oder Wachstumslampen als Hilfsmittel, um eine stabile Temperatur aufrechtzuerhalten.
-Lichtregime
-Lichtbedarf: Stelle sicher, dass ausreichend Licht vorhanden ist. Wenn du Lampen verwendest, achte darauf, dass sie sich in einer Höhe von 5-10 cm über dem Boden befinden und 18 Stunden pro Tag leuchten.
-Luftfeuchtigkeit
-Halte die Luftfeuchtigkeit auf einem Niveau von 60-70% uns lüfte täglich, um Luftstagnation und Schimmelbildung zu vermeiden.
-Durch die Einhaltung dieser Pflegemaßnahmen stellst du sicher, dass deine Cannabis-Pflanzen gesund wachsen und gedeihen."/>
+            <column name="content" value="# Tag 4
+
+## Vegetationsphase
+
+Die Vegetationsphase ist eine entscheidende Phase im Anbauzyklus von Cannabis, in der die Pflanze aktiv wächst und sich auf die Blüte vorbereitet. Hier sind einige wichtige Punkte, die dir helfen, eine hervorragende Ernte zu erzielen.
+
+### Lichtbedarf
+- Stelle sicher, dass deine Pflanzen viel Licht erhalten.
+- Gib ihnen 18 Stunden Licht und 6 Stunden Dunkelheit täglich.
+
+### Temperatur und Luftfeuchtigkeit
+- Halte die Temperatur im Bereich von 22-28°C.
+- Die optimale Luftfeuchtigkeit für das Wachstum liegt bei 60-70%.
+
+Durch die Beachtung dieser einfachen Richtlinien förderst du ein gesundes Wachstum und bereitest deine Pflanzen auf eine erfolgreiche Blüte vor."/>
             <column name="day" value="5"/>
             <column name="image" value="src/main/resources/static/images/tag5.jpg"/>
         </insert>

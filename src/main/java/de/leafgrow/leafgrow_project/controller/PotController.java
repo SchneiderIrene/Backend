@@ -7,6 +7,7 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.repository.PotRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.PotService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,7 +42,7 @@ public class PotController {
     }
 
     @PostMapping("/{id}/refresh")
-    public ResponseEntity<Void> refreshPot(@PathVariable Long id) {
+    public ResponseEntity<Pot> refreshPot(@PathVariable Long id) {
         Optional<Pot> potOptional = repository.findById(id);
         if (potOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -49,7 +50,18 @@ public class PotController {
         Pot pot = potOptional.get();
 
         service.refreshPot(pot);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(pot);
+    }
+
+    @PostMapping("/create-pot-admin")
+    public ResponseEntity<Pot> createPotForAdmin(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        User user = userService.loadUserByEmail(email);
+        Pot pot = service.createPotForAdmin(user);
+        repository.save(pot);
+        return ResponseEntity.ok(pot);
     }
 
     @PostMapping("/create")
