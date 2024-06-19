@@ -56,6 +56,7 @@ public class PotServiceImpl implements PotService {
         }
     }
 
+    @Override
     @Transactional
     public Pot createPotForAdmin(User user){
         Pot pot = new Pot();
