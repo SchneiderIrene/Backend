@@ -82,14 +82,14 @@ public class PotController {
 
     @PostMapping("/{id}/skip-day")
     //@PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> skipDay(@PathVariable Long id) {
+    public ResponseEntity<Pot> skipDay(@PathVariable Long id) {
         Optional<Pot> potOptional = repository.findById(id);
         if (potOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Pot pot = potOptional.get();
         service.skipDay(pot);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(pot);
     }
 
 
