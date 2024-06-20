@@ -56,6 +56,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/pots/{id}/refresh").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/{id}/activate").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/pots/create").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/pots/{id}/delete").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/pots/{id}/skip-day").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/my").authenticated()
                         .anyRequest().authenticated())

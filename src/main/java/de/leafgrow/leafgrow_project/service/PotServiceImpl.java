@@ -102,6 +102,8 @@ public class PotServiceImpl implements PotService {
         }
     }
 
+    @Override
+    @Transactional
     public void skipDay(Pot pot) {
         int currentDay = pot.getInstruction().getDay();
         int nextDay = (currentDay % MAX_DAYS) + 1; // Предполагая, что MAX_DAYS — это длина цикла.
@@ -110,9 +112,19 @@ public class PotServiceImpl implements PotService {
         potRepository.save(pot);
     }
 
+    @Override
     public List<Pot> findPotsByUserId(Long userId) {
         List<Pot> pots = potRepository.findByUserId(userId);
         pots.sort(Comparator.comparingLong(Pot::getId));
         return pots;
     }
+
+    @Override
+    @Transactional
+    public Pot deletePotById(Long id){
+        Pot pot = potRepository.findById(id).orElseThrow(() -> new RuntimeException("Pot not found"));
+        potRepository.delete(pot);
+        return pot;
+    }
+
 }

@@ -17,4 +17,6 @@ public interface PotService {
     List<Pot> findPotsByUserId(Long userId);
 
     Pot createPotForAdmin(User user);
+
+    Pot deletePotById(Long id);
 }

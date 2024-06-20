@@ -7,7 +7,6 @@ import de.leafgrow.leafgrow_project.domain.entity.User;
 import de.leafgrow.leafgrow_project.repository.PotRepository;
 import de.leafgrow.leafgrow_project.service.interfaces.PotService;
 import de.leafgrow.leafgrow_project.service.interfaces.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -108,6 +107,12 @@ public class PotController {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
+    }
 
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<Pot> deletePotById(@PathVariable Long id){
+        Pot pot = repository.findById(id).orElseThrow(() -> new RuntimeException("Pot not found"));
+        repository.delete(pot);
+        return ResponseEntity.ok(pot);
     }
 }
